@@ -8,10 +8,9 @@ public class Player : MonoBehaviour
     [Header("Inscribed")]
     public float speed = 20;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        FollowCam.POI = this.gameObject;
     }
 
     // Update is called once per frame
