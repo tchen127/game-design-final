@@ -1,0 +1,27 @@
+------------------------------------------------------
+Dinosaur Black Hole - Initial Game Narrative - 3/19/24
+------------------------------------------------------
+66 million years before the Industrial Revolution, the Dinosaurs dominated the planet. In this famed era of the Cretaceous, their beautiful skyscrapers towered into their skies, looming over vast expanses of cityscape and flying dino-vehicles. Their complex civilization is a result of millions of years worth of technological advancement that dates back to the Jurassic. Yet, modern paleontology has failed to capture the history of this beautiful marvel of the ingenuity of life. What on earth happened? 
+
+Dr. Stenon may be able to help us learn the truth. As a world-renowned physicist, Dr. Stenon gained much acclaim in her field and was trusted to lead some of the world's most promising research. Unfortunately, one fateful hot summer day in the year 66,345,002 B.P. would spell the end for her career... and her world. In what is now modern-day Alaska, a gaping black hole expanded over the vast city of Dinopolis--caused by a failed procedure during Dr. Stenon's experiment. 
+
+Before her very eyes, Dr. Stenon watched as her facility, her research crew, and the building next door began to hurl towards the sky. Within minutes, more and more of Dinopolis and its thousands of residents were suddenly finding themselves plummeting towards certain doom. Dr. Stenon, barely clinging to the ground via an extra-stubborn piece of rebar, quickly formed a plan. She climed towards her first objective: a techy gadget known as a Gravity Reverser. With this, she could resist the effects of the black hole's gravitational pull. She then allowed herself to be sucked into the black hole before activating the device. Now, she was faced with her goal: save as many residents of Dinopolis as she can! 
+
+To do this, Dr. Stenon must find helpless dinos then grant them black hole resistance using the Gravity Reverser. She must then lead them safely down to the ground and place them into a nuclear fallout bunker. (This is the setting of the gameplay)
+
+Dr. Stenon then began to travel the world to save as many dinosaurs as she could. More were scattered in various nuclear shelters. When the black hole finally vanished, the small population of remaining dinosaurs were sadly greeted with the loss of their cities, homes, infrastructure, and loved ones. Those fit for surviving these post-apocalyptic conditions--the small, the quick, and the flying--evolved to become birds we humans know and love today. For those who were unable to sustain a growing population with such a small size, the surviving few lived the rest of their days crying, laughing, sharing stories over fires, and strangely enjoying the silence of the world as they learned to accept their imminent extinction. 
+
+
+-----------------------------
+More Details on Gameplay Lore
+-----------------------------
+
+The player plays as Dr. Stenon, a Stenonychosaurus (in real science, Stenonychosaurus is a dinosaur genus hypothesized to have the intelligence of smart animals today, like dolphins or crows). 
+
+During the game, Dr. Stenon is helping dinosaurs in the sky reach the ground safely. The environment consists of references to the city of Dinopolis. The walkable platforms in the game are made up of rocks, dirt, steel bars, wood, cars, or other remnants of infrastructure. 
+
+The dinosaurs that Dr. Stenon are innocent civilians that need saving. They are of various species--here's an example of a few: T. Rex, Stegosaurus, Velociraptor. They might use some sort of AI, including flocking behavior, to follow the player. 
+
+Potential idea for AI Enemies: "corrupted" dinosaurs that creep out of the black hole to follow and attack the player and/or the civilian dinosaurs (Lore: Resulted from the failed science experiment. Maybe they resemble SCP anomalies). 
+
+As the player approaches the ground, the black hole's event horizon becomes larger in diameter, so the player must move quickly to outspeed it and avoid being caught inside it (Lore: the Gravity Reverser won't have enough power to get her out again). Requires a lot of suspense in logic, science, and common sense. Might come up with a better explanation later. 
