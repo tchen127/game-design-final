@@ -14,13 +14,13 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //check axis for horizontal movement
         float xAxis = Input.GetAxis("Horizontal");
 
         //change player position based on input
-        Vector3 pos = transform.position;
+        Vector2 pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
         transform.position = pos;
     }
