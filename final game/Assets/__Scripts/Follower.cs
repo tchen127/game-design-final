@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,12 +22,6 @@ public class Follower : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate(){
         //get the vector from the Follower to the player
         Vector2 vecToPlayer = player.position - transform.position;
@@ -34,12 +29,11 @@ public class Follower : MonoBehaviour
         
         //only move Follower if it is far enough away
         //don't move Follower if it is below player (if follower gets ahead, player can catch up)
-        if ((vecToPlayer.magnitude > followDistance) && (vecToPlayer.y <= .5)){
+        if ((Math.Abs(vecToPlayer.x) > followDistance) && (vecToPlayer.y <= .5)){
             //move Follower towards the player
             vecToPlayer.y = 0;
             moveCharacter(vecToPlayer);
-        }
-        
+        }  
     }
 
     private void moveCharacter(Vector2 direction){

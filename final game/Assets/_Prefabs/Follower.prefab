@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7453788077652296575}
   - component: {fileID: 7453788077652296560}
   - component: {fileID: 7453788077652296563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Follower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,6 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357ca479801d4d04284225d942dcadd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8966919587361992078, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
-  followDistance: 3
+  player: {fileID: 1061720139759794848, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
+  followDistance: 2
   moveSpeed: 6
