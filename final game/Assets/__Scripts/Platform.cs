@@ -6,7 +6,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [Header("Inscribed")]
-    public float moving_speed = 20f;
+    public float moving_speed = 10f;
 
     private BoundsCheck boundCheck;
 
@@ -14,7 +14,6 @@ public class Platform : MonoBehaviour
     {
         boundCheck = GetComponent<BoundsCheck>();
     }
-
 
     public Vector2 pos
     {
