@@ -29,7 +29,7 @@ public class Follower : MonoBehaviour
         
         //only move Follower if it is far enough away
         //don't move Follower if it is below player (if follower gets ahead, player can catch up)
-        if ((Math.Abs(vecToPlayer.x) > followDistance) && (vecToPlayer.y <= .5)){
+        if ((Math.Abs(vecToPlayer.x) > followDistance) && (vecToPlayer.y <= 1)){
             //move Follower towards the player
             vecToPlayer.y = 0;
             moveCharacter(vecToPlayer);
