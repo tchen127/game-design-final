@@ -83,3 +83,92 @@ quickly to outspeed it and avoid being caught inside it (Lore:
 the Gravity Reverser won't have enough power to get her out
 again). Requires a lot of suspense in logic, science, and common
 sense. Might come up with a better explanation later. 
+
+--------------------- NARRATIVE MODIFICATIONS 4/2/24 ---------------------
+
+Setting Lore
+---
+Dr. Stenon has been renamed to Dr. Sten because it rolls of the
+tongue easier.
+
+Everyone that Dr. Sten saves is flown to a faraway planet (name TBD.
+best idea so far: "Sauria") where they can rebuild society. 
+Those that Dr. Sten fails to rescue will be sucked away by the black
+hole, then later hail down onto Earth to become the fossils humanity
+later discovers. 
+
+
+Game Lore
+---
+
+The Gravity Reverser will let Dr. Sten and others survive inside the
+event horizon for only a few seconds, e.g. 5 seconds.
+
+Instead of being teleported, Dr. Sten is transported to the top of
+each level via a spaceship that is piloted by her sidekick (name
+TBD). 
+
+At the end of each level, Dr. Sten and her sidekick pilot them all to
+the faraway planet, before coming back for the next level. 
+
+
+Ideas on how to lore drop
+---
+Begin the game with a cutscene, consisting of a series of images
+depicting Dr. Sten's accident. Here's a rough outline of the
+procession of events:
+- zoomed out overview of dinopolis. shiny and pretty 
+- zoom in view of happy dinosaurs living their lives in streets and
+flying cars
+- zoom in on dr. sten's research facility
+- view of dr. sten and her crew doing sciencey stuff
+- explosion of some sort
+- sky turns grey
+- horrified looks in faces of scientists and civilians
+- black hole opens up
+- buildings start to tear apart
+- dinosaurs start to fly into the sky
+- dr. sten grabs exposed rebar to prevent being sucked away
+- dr. sten crawls to a location where sciency gadgets are stored
+- reveal of gravity reverser
+- dr. sten uses the reverser on herself
+- finds one of her crew members (future sidekick) and uses the
+reverser on them
+- they find a rocket inside the crumbling facility
+- they power it on and blast off
+- they are shown flying towards the black hole
+
+Title menu ideas:
+- dr. sten and the dinos she is rescuing trailing behind her, all
+have fearful expressions, and above them is the black hole
+- dr. sten, sidekick, and rescued dinos flying away from the black
+hole
+I think I like the first idea better
+
+Between levels, there is dialogue between Dr. Sten and her sidekick.
+There they can try to unravel the cause of the explosion, and ponder
+the future of dinosaurs (and the meaning of life, or something like
+that), 
+whle forming a bond. Perhaps some of the rescued dinosaurs also have
+dialogue, and they share how they feel about the situation. 
+Before each level begins, there can be some expositionary dialogue
+from her sidekick that tells Dr. Sten what to expect, (new platform
+types or game mechanics) 
+as well as lore about the city they're visiting. Perhaps lore about
+how each city is being affected by the black hole. 
+
+Next goal: decide on city names, then develop basic lore about each
+one. It might be fun to make reference to the modern-day cities they
+are named after. e.g. 
+an egypt-themed city might have a dinosaur version of the Great
+Pyramids of Giza (maybe they are spikes on the back of a giant
+Stegosaurus statue)
+
+What happens at the end of the game? 
+Idea: The black hole envelops the entire world, and Dr. Sten and crew
+must stay on their planet. Eventually the black hole dissipates but 
+the dinosaurs are still recovering. Soon the mammals take over Earth, 
+and the dinosaurs are forced to stay on their planet. 
+
+
+
