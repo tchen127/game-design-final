@@ -29,7 +29,7 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        Move();
+        // Move();
 
         // Check whether platform has gone above the screen, beyond blackhole
         if (!boundCheck.isOnScreen)
