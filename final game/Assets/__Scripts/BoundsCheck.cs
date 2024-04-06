@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoundsCheck : MonoBehaviour
 {
@@ -96,6 +97,7 @@ public class BoundsCheck : MonoBehaviour
 
             if (timespanBottom < Time.time){
                 Debug.Log("FELL TO YOUR DEATH");
+                SceneManager.LoadScene("GameOver");
             }
             pos.y = -camHeight;                                               // e  
         }
