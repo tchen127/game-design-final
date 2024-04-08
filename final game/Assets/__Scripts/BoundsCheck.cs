@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoundsCheck : MonoBehaviour
 {
+    private float eventTimeBottom = 0;
+    private float eventTimeTop = 0;
+    private float timespanTop;
+    private float timespanBottom;
+
     [System.Flags]
     public enum eScreenLocs
     {
@@ -49,12 +55,12 @@ public class BoundsCheck : MonoBehaviour
         // Restrict the Y position to camHeight
         if (pos.y > camHeight)
         {
-            pos.y = camHeight;
+            //pos.y = camHeight;
             screenLocs |= eScreenLocs.offUp;                                                // e
         }
         if (pos.y < -camHeight)
         {
-            pos.y = -camHeight;
+            //pos.y = -camHeight;
             screenLocs |= eScreenLocs.offDown;                                          // e
         }
 
@@ -63,6 +69,37 @@ public class BoundsCheck : MonoBehaviour
         {
             transform.position = pos;
             screenLocs = eScreenLocs.onScreen;
+        }
+
+        // Logic for detecting whether player spends too 
+        // much time close too close to black hole
+        if (pos.y > (camHeight)) {   
+            Debug.Log(camHeight - 5);                                           // e
+            if (eventTimeTop == 0) {
+                eventTimeTop = Time.time;
+                timespanTop = eventTimeTop + 5;
+            }
+
+            if (timespanTop < Time.time && pos.y > camHeight){
+                Debug.Log("BLACK HOLE GOT YA");
+            }
+            
+            //pos.y = camHeight;                                                // e
+        }
+
+        // Logic for detecting player off screen at bottom for x amount of time
+        if (pos.y < -camHeight) {                                             // e
+            Debug.Log("Below Camera Bottom");
+            if (eventTimeBottom == 0) {
+                eventTimeBottom = Time.time;
+                timespanBottom = eventTimeBottom + 5;
+            }
+
+            if (timespanBottom < Time.time){
+                Debug.Log("FELL TO YOUR DEATH");
+                SceneManager.LoadScene("GameOver");
+            }
+            pos.y = -camHeight;                                               // e  
         }
 
     }
