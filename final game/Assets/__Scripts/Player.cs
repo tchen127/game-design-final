@@ -45,6 +45,14 @@ public class Player : MonoBehaviour
         Debug.Log(isGrounded);
         */
 
+        //true if jump button is pressed
+        bool pressingJump = Input.GetButton("Jump");
+        //jump 
+        if (pressingJump && isGrounded)
+        {   
+            rb.velocity = jumpVec;
+        }
+
         //check axis for horizontal movement
         float xAxis = Input.GetAxis("Horizontal");
 
@@ -53,13 +61,7 @@ public class Player : MonoBehaviour
         pos.x += xAxis * speed * Time.deltaTime;
         transform.position = pos;
 
-        //true if jump button is pressed
-        bool pressingJump = Input.GetButton("Jump");
-        //jump 
-        if (pressingJump && isGrounded)
-        {   
-            rb.velocity = jumpVec;
-        }
+        
     }
 
     void OnCollisionStay2D(Collision2D collision)
