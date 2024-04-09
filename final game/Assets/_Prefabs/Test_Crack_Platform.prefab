@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenLocs: 0
-  camWidth: 0
-  camHeight: 0
+  camWidth: 1
+  camHeight: 1
 --- !u!114 &-5984459661903480626
 MonoBehaviour:
   m_ObjectHideFlags: 0

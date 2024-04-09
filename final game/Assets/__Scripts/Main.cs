@@ -10,8 +10,8 @@ public class Main : MonoBehaviour
 
     [Header("Inscribed")]
     public GameObject[] prefabPlatform;
-    public float platformSpawnPerSecond = 0.5f;
-    public float platformInsetDefault = 1.5f;
+    public float platformSpawnPerSecond = 1f;
+    public float platformInsetDefault = 5f;
 
     private BoundsCheck boundCheck;
     // Start is called before the first frame update
@@ -29,7 +29,8 @@ public class Main : MonoBehaviour
         int ndx = Random.Range(0, prefabPlatform.Length);
         GameObject go = Instantiate<GameObject>(prefabPlatform[ndx]);
 
-        float platformInset = platformInsetDefault;
+        int distance = Random.Range(0, 10);
+        float platformInset = platformInsetDefault + distance;
 
         // set initial position of the platform 
         Vector2 pos = Vector2.zero;
