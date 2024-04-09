@@ -35,15 +35,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*
         //determine if player is on a jumpable layer object. 
-        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, playerHeight / 2,0 ) + .1f, Vector2.down, (playerHeight / 2) + .2f, layerMask);
-        Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (Vector3.down * 1.2f), Color.blue);
+        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), Vector2.down, .5f, layerMask);
+        Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f,0 ) - new Vector3(0, .5f, 0), Color.blue);
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
         else isGrounded = false;
         Debug.Log(isGrounded);
-        */
 
         //true if jump button is pressed
         bool pressingJump = Input.GetButton("Jump");
