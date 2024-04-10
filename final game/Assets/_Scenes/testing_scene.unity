@@ -247,8 +247,7 @@ GameObject:
   - component: {fileID: 532099808}
   - component: {fileID: 532099807}
   - component: {fileID: 532099806}
-  - component: {fileID: 532099811}
-  - component: {fileID: 532099810}
+  - component: {fileID: 532099809}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -321,7 +320,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &532099810
+--- !u!114 &532099809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,27 +329,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 532099805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9266a5268f5b847d3ab2347fde94afc6, type: 3}
+  m_Script: {fileID: 11500000, guid: a58d5f6a3b5dc174f8b3fbce81c7adb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPlatform:
-  - {fileID: 7855163241684261895, guid: 01fbf555a0a9faf46bf17cb6f68971d8, type: 3}
-  - {fileID: 5579427243020245617, guid: 1d24c29261e964561b447946ba0bb371, type: 3}
-  platformSpawnPerSecond: 0.5
-  platformInsetDefault: -10
---- !u!114 &532099811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532099805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb284490ec0710e4ca347a226882e70d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
+  platformSquarePrefab: {fileID: 2612243185138892256, guid: f822f8ef6ab3a03499bbece5f6da2527, type: 3}
+  distanceFromCameraBottom: -0.1
+  spawnDelay: 1
+  platformSpeed: 2
 --- !u!1001 &613677717
 PrefabInstance:
   m_ObjectHideFlags: 0
