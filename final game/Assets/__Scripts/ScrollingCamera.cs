@@ -27,7 +27,7 @@ public class ScrollingCamera : MonoBehaviour
         if (this.transform.position.y > 0){
         //move camera down at a constant speed
         Vector3 camPos = transform.position;
-        camPos.y -= speed * Time.deltaTime;
+        camPos.y += speed * Time.deltaTime;
         transform.position = camPos;
         }
         

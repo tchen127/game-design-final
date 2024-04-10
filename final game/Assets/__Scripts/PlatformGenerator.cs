@@ -12,6 +12,9 @@ public class PlatformGenerator : MonoBehaviour
     // spawn delay, in seconds
     public float spawnDelay = 1f;
 
+    //speed that platforms will move upward
+    public float platformSpeed = 2f;
+
     private float time;
 
     // Start is called before the first frame update
@@ -67,6 +70,10 @@ public class PlatformGenerator : MonoBehaviour
             x++;
 
         }
+
+        //attach movement script so platform moves up
+        platform.AddComponent<MoveObject>();
+        platform.GetComponent<MoveObject>().speed = platformSpeed;
 
         Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
 
