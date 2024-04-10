@@ -80,7 +80,7 @@ public class BoundsCheck : MonoBehaviour
                 timespanTop = eventTimeTop + 5;
             }
 
-            if (timespanTop < Time.time && pos.y > camHeight){
+            if (timespanTop < Time.time & pos.y > camHeight){
                 Debug.Log("BLACK HOLE GOT YA");
             }
             
@@ -90,12 +90,12 @@ public class BoundsCheck : MonoBehaviour
         // Logic for detecting player off screen at bottom for x amount of time
         if (pos.y < -camHeight) {                                             // e
             Debug.Log("Below Camera Bottom");
-            if (eventTimeBottom == 0) {
+            if (eventTimeBottom == 0 | timespanBottom < Time.time) {
                 eventTimeBottom = Time.time;
                 timespanBottom = eventTimeBottom + 5;
             }
 
-            if (timespanBottom < Time.time){
+            if (timespanBottom < Time.time & pos.y < -camHeight){
                 Debug.Log("FELL TO YOUR DEATH");
                 SceneManager.LoadScene("GameOver");
             }
