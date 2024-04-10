@@ -16,11 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5;
     [SerializeField] private LayerMask layerMask;
 
-    void Awake()
-    {
-        //tells camera to follow this object
-        ScrollingCamera.POI = this.gameObject;
-    }
 
     void Start()
     {
