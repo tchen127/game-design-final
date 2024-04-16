@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //determine if player is on a jumpable layer object. 
-        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), Vector2.down, .5f, layerMask);
+        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), Vector2.down, .15f, layerMask);
         Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f,0 ) - new Vector3(0, .5f, 0), Color.blue);
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
@@ -55,9 +55,21 @@ public class Player : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal");
 
         //change player position based on input
-        Vector2 pos = transform.position;
-        pos.x += xAxis * speed * Time.deltaTime;
-        transform.position = pos;
+        Vector2 pos = this.transform.position;
+
+
+        //used to check to see if moving will make player move off the screen
+        float xPos = pos.x + xAxis * speed * Time.deltaTime;
+        //if updating x position will move player off screen border, don't update x position
+        if (atScreenBorder(xPos)){
+            transform.position = pos;
+        }
+        //otherwise, update position as usual
+        else {
+            pos.x = xPos;
+            transform.position = pos;
+        }
+
 
         
     }
@@ -85,7 +97,7 @@ public class Player : MonoBehaviour
     /// Can alter width of character to get closer/farther from the border
     /// </summary>
     /// <returns>True if player is at side border of screen, otherwise false</returns>
-    private bool atSideOfScreen()
+    private bool atScreenBorder(float xPos)
     {
         //get coordinates of left and right border of screen
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 1));
@@ -95,14 +107,16 @@ public class Player : MonoBehaviour
         float maxXPos = rightEdge.x - (playerWidth / 2);
         float minXPos = leftEdge.x + (playerWidth / 2);
 
-        //player position
-        Vector3 pos = this.transform.position;
-
         //return true if player is at border, otherwise false
-        if (pos.x < minXPos || pos.x > maxXPos){
+        if (xPos < minXPos || xPos > maxXPos){
             return true;
         }
 
         return false;
     }
+
+    //start to update position, creating a new vector that will be applied to the transform
+    //if the new vector is outside the boundaries of the screen, set x component back to transform.x
+
+
 }
