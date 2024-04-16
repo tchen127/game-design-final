@@ -337,7 +337,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657110958}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d618bee3e6933c643891933131eb48d6, type: 3}
   m_Name: 
@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261895, guid: 01fbf555a0a9faf46bf17cb6f68971d8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3108283119437488223, guid: 01fbf555a0a9faf46bf17cb6f68971d8, type: 3}
@@ -481,8 +481,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1061720139759794852, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
+      propertyPath: jumpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061720139759794852, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
       propertyPath: layerMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061720139759794853, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
+      propertyPath: m_GravityScale
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1061720139759794859, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
       propertyPath: m_Name
@@ -490,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1061720139759794859, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
