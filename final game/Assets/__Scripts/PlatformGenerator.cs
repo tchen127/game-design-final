@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
+    [Header("Debugging")]
+    [SerializeField] private bool debugOn;
     public GameObject platformSquarePrefab;
+    public GameObject Normal_Platform_MiddlePrefab;
+    public GameObject Normal_Platform_LeftPrefab;
+    public GameObject Normal_Platform_RightPrefab;
 
     // must be a negative number if we want it off-screen
     public float distanceFromCameraBottom = -0.1f;
@@ -61,10 +66,27 @@ public class PlatformGenerator : MonoBehaviour
 
             // spawn platform and set position
             Vector2 position = new Vector2(x, y);
-            GameObject square = Instantiate<GameObject>(platformSquarePrefab);
-            square.transform.position = position;
 
-            square.transform.SetParent(platform.transform);
+            // First iteration spawn the left edge of the platform
+            if (i == 0) {
+                GameObject squareLeft = Instantiate<GameObject>(Normal_Platform_LeftPrefab);
+                squareLeft.transform.position = position;
+                squareLeft.transform.SetParent(platform.transform);
+            
+            // Last iteration spawn the right edge of the platform
+            } else if (i == (length - 1) ){
+                GameObject squareRight = Instantiate<GameObject>(Normal_Platform_RightPrefab);
+                squareRight.transform.position = position;
+                squareRight.transform.SetParent(platform.transform);
+
+            // Else spawn middle piece of the platform
+            } else {
+                GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
+                squareMiddle.transform.position = position;
+
+                squareMiddle.transform.SetParent(platform.transform);
+            }
+            
 
             // next square will be to the right by 1, so increase x by 1
             x++;
@@ -75,7 +97,7 @@ public class PlatformGenerator : MonoBehaviour
         platform.AddComponent<MoveObject>();
         platform.GetComponent<MoveObject>().speed = platformSpeed;
 
-        Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
+        if (debugOn) Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
 
     }
 }

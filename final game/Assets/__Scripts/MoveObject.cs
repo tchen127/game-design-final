@@ -8,7 +8,7 @@ public class MoveObject : MonoBehaviour
     public float speed = 5;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //move object up at a constant speed
         Vector3 objPos = transform.position;
