@@ -41,6 +41,36 @@ public class BoundsCheck : MonoBehaviour
 
         screenLocs = eScreenLocs.onScreen;
 
+        // !! change offset to make platform spawn a little off the x axis
+        // Restrict the X position to camWidth and some offset later
+        if (pos.x > camWidth)
+        {
+            pos.x = camWidth;                                                // e
+        }
+        if (pos.x < -camWidth)
+        {
+            pos.x = -camWidth;                                                // e
+        }
+
+        // Restrict the Y position to camHeight
+        if (pos.y > camHeight)
+        {
+            //pos.y = camHeight;
+            screenLocs |= eScreenLocs.offUp;                                                // e
+        }
+        if (pos.y < -camHeight)
+        {
+            //pos.y = -camHeight;
+            screenLocs |= eScreenLocs.offDown;                                          // e
+        }
+
+        // no keepOnScreen function
+        if (!isOnScreen)
+        {
+            transform.position = pos;
+            screenLocs = eScreenLocs.onScreen;
+        }
+
         // Logic for detecting whether player spends too 
         // much time close too close to black hole
         if (pos.y > (camHeight)) {   

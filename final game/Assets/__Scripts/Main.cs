@@ -6,33 +6,43 @@ using UnityEngine.SceneManagement;
 // Replace this with platform generator
 public class Main : MonoBehaviour
 {
+    static private Main S;
 
     [Header("Inscribed")]
-    //time that the level will last
-    [SerializeField] private float levelTime;
+    public GameObject[] prefabPlatform;
+    public float platformSpawnPerSecond = 1f;
+    public float platformInsetDefault = 5f;
 
-    [Header("PlatformSpawning")]
-    [SerializeField] private GameObject[] prefabPlatform;
-    [SerializeField] private float spawnDistanceFromCameraBottom;
-    [SerializeField] private float platformSpawnPerSecond = 1f;
-
-    [Header("AI Spawning")]
-    [SerializeField] private int maxFollowerCount;
-
-    private float time;
-
-    void Start()
+    private BoundsCheck boundCheck;
+    // Start is called before the first frame update
+    void Awake()
     {
-        time = 0;
+        S = this;
+        boundCheck = GetComponent<BoundsCheck>();
+
+        Invoke(nameof(SpawnPlatform), 1f / platformSpawnPerSecond);
     }
 
-    void Update()
+    public void SpawnPlatform()
     {
         // Pick a random type of platform to instantiate 
         int ndx = Random.Range(0, prefabPlatform.Length);
+        GameObject go = Instantiate<GameObject>(prefabPlatform[ndx]);
+
+        int distance = Random.Range(0, 10);
+        float platformInset = platformInsetDefault + distance;
 
         // set initial position of the platform 
-        Vector3 initPos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), spawnDistanceFromCameraBottom, 1));
+        Vector2 pos = Vector2.zero;
 
+        // add offset if cause problems 
+        float xMin = -boundCheck.camWidth;
+        float xMax = boundCheck.camWidth;
+
+        pos.x = Random.Range(xMin, xMax);
+        pos.y = boundCheck.camHeight + platformInset;
+        go.transform.position = pos;
+
+        Invoke(nameof(SpawnPlatform), 1f / platformSpawnPerSecond);
     }
 }
