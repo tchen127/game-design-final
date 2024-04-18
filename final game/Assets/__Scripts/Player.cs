@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerWidth;
     [SerializeField] private LayerMask layerMask;
 
+    [Header("Debug")]
+    [SerializeField] private bool debugOn;
+
 
     void Start()
     {
@@ -37,11 +40,13 @@ public class Player : MonoBehaviour
     {
         //determine if player is on a jumpable layer object. 
         hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), Vector2.down, .15f, layerMask);
-        Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f,0 ) - new Vector3(0, .5f, 0), Color.blue);
+
+        //draw raycast used to detect if player can jump
+        if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f,0 ) - new Vector3(0, .5f, 0), Color.blue);
+
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
         else isGrounded = false;
-        Debug.Log(isGrounded);
 
         //true if jump button is pressed
         bool pressingJump = Input.GetButton("Jump");
@@ -68,10 +73,7 @@ public class Player : MonoBehaviour
         else {
             pos.x = xPos;
             transform.position = pos;
-        }
-
-
-        
+        } 
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Jumpable"))
         {
             isGrounded = true;
-            Debug.Log("isGrounded: " + isGrounded);
+            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
 
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Jumpable"))
         {
             isGrounded = false;
-            Debug.Log("isGrounded: " + isGrounded);
+            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
 
