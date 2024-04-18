@@ -9,7 +9,7 @@ public class PlatformGenerator : MonoBehaviour
 
     [Header("Inscribed")]
     public GameObject platformSquarePrefab;
-    public GameObject[] prefabPlatform;
+    public GameObject[] prefabPlatforms;
 
     public GameObject Normal_Platform_MiddlePrefab;
     public GameObject Normal_Platform_LeftPrefab;
@@ -72,34 +72,40 @@ public class PlatformGenerator : MonoBehaviour
             Vector2 position = new Vector2(x, y);
 
             // First iteration spawn the left edge of the platform
-            if (i == 0) {
+            if (i == 0)
+            {
                 GameObject squareLeft = Instantiate<GameObject>(Normal_Platform_LeftPrefab);
                 squareLeft.transform.position = position;
                 squareLeft.transform.SetParent(platform.transform);
-            
-            // Last iteration spawn the right edge of the platform
-            } else if (i == (length - 1) ){
+
+                // Last iteration spawn the right edge of the platform
+            }
+            else if (i == (length - 1))
+            {
                 GameObject squareRight = Instantiate<GameObject>(Normal_Platform_RightPrefab);
                 squareRight.transform.position = position;
                 squareRight.transform.SetParent(platform.transform);
 
-            // Else spawn middle piece of the platform
-            } else {
+                // Else spawn middle piece of the platform
+            }
+            else
+            {
                 GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
                 squareMiddle.transform.position = position;
 
-            squareMiddle.transform.SetParent(platform.transform);
+                squareMiddle.transform.SetParent(platform.transform);
+            }
+
+            // next square will be to the right by 1, so increase x by 1
+            x++;
+
+
+            //attach movement script so platform moves up
+            platform.AddComponent<MoveObject>();
+            platform.GetComponent<MoveObject>().speed = platformSpeed;
+
+            if (debugOn) Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
+
         }
-
-        // next square will be to the right by 1, so increase x by 1
-        x++;
-
-
-        //attach movement script so platform moves up
-        platform.AddComponent<MoveObject>();
-        platform.GetComponent<MoveObject>().speed = platformSpeed;
-
-        if (debugOn) Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
-
     }
 }
