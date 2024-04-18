@@ -123,11 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &204823118 stripped
+--- !u!1 &204823118
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 5579427243020245617, guid: 1d24c29261e964561b447946ba0bb371, type: 3}
   m_PrefabInstance: {fileID: 932037786}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204823121}
+  - component: {fileID: 204823120}
+  - component: {fileID: 204823119}
+  m_Layer: 0
+  m_Name: Placeholder for referenced GameObject in Prefab instance (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!61 &204823119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,6 +188,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!4 &204823121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 9223372036854775807, guid: 1d24c29261e964561b447946ba0bb371, type: 3}
+  m_PrefabInstance: {fileID: 932037786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204823118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 620313663}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &487808199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,6 +362,9 @@ MonoBehaviour:
   debugOn: 0
   platformSquarePrefab: {fileID: 2612243185138892256, guid: f822f8ef6ab3a03499bbece5f6da2527, type: 3}
   prefabPlatform: []
+  Normal_Platform_MiddlePrefab: {fileID: 7855163241684261895, guid: 6c6eb152b61d08e4880faec47986b4a9, type: 3}
+  Normal_Platform_LeftPrefab: {fileID: 7855163241684261895, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
+  Normal_Platform_RightPrefab: {fileID: 7855163241684261895, guid: c71fde90fb8c6654598e6b6a9647e578, type: 3}
   distanceFromCameraBottom: -0.1
   spawnDelay: 1
   platformSpeed: 2
@@ -529,6 +559,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restart: 0
+--- !u!1 &620313662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 5579427243020245617, guid: 1d24c29261e964561b447946ba0bb371, type: 3}
+  m_PrefabInstance: {fileID: 932037786}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620313663}
+  m_Layer: 0
+  m_Name: 'Crack_Platform (Missing Prefab with guid: 1d24c29261e964561b447946ba0bb371)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &620313663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4757769498100850683, guid: 1d24c29261e964561b447946ba0bb371, type: 3}
+  m_PrefabInstance: {fileID: 932037786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620313662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 204823121}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &701887296
 PrefabInstance:
   m_ObjectHideFlags: 0
