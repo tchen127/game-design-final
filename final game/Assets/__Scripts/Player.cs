@@ -42,9 +42,6 @@ public class Player : MonoBehaviour
     {
         //determine if player is on a jumpable layer object.
         hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .5f, layerMask);
-        Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
-
-        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .15f, layerMask);
 
         //draw raycast used to detect if player can jump
         if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
@@ -147,6 +144,7 @@ public class Player : MonoBehaviour
     }
 
 
+/*
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Jumpable"))
@@ -167,6 +165,7 @@ public class Player : MonoBehaviour
             if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
+*/
 
     /// <summary>
     /// Return true if player is at the side of the screen

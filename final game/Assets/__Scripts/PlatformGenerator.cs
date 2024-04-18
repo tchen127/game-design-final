@@ -6,8 +6,10 @@ public class PlatformGenerator : MonoBehaviour
 {
     [Header("Debugging")]
     [SerializeField] private bool debugOn;
+
+    [Header("Inscribed")]
     public GameObject platformSquarePrefab;
-    public GameObject[] prefabPlatform;
+    public GameObject[] prefabPlatforms;
 
     // must be a negative number if we want it off-screen
     public float distanceFromCameraBottom = -0.1f;
@@ -42,7 +44,7 @@ public class PlatformGenerator : MonoBehaviour
     {
 
         // first, randomize platform type. implement later once we have different types of platforms
-        int type = Random.Range(0, prefabPlatform.Length - 1);
+        int type = Random.Range(0, prefabPlatforms.Length - 1);
 
         // then, randomize x position (between 0 and 1, 0 being leftmost edge of camera and 1 being rightmost edge of camera); y will always be a given distance 
         Vector3 initPos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), distanceFromCameraBottom, 1));
@@ -64,7 +66,7 @@ public class PlatformGenerator : MonoBehaviour
         {
             // spawn platform and set position
             Vector2 position = new Vector2(x, y);
-            GameObject square = Instantiate<GameObject>(prefabPlatform[type]);
+            GameObject square = Instantiate<GameObject>(prefabPlatforms[type]);
             square.transform.position = position;
 
             square.transform.SetParent(platform.transform);
