@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
+    [Header("Debugging")]
+    [SerializeField] private bool debugOn;
     public GameObject platformSquarePrefab;
     public GameObject[] prefabPlatform;
 
@@ -76,7 +78,7 @@ public class PlatformGenerator : MonoBehaviour
         platform.AddComponent<MoveObject>();
         platform.GetComponent<MoveObject>().speed = platformSpeed;
 
-        Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
+        if (debugOn) Debug.Log("Spawned new platform at (" + initPos.x + ", " + initPos.y + ")");
 
     }
 }

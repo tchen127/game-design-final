@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5;
     [SerializeField] private LayerMask layerMask;
 
+    [Header("Debug")]
+    [SerializeField] private bool debugOn;
+
     void Start()
     {
         //get rigidbody component
@@ -36,13 +39,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //determine if player is on a jumpable layer object. 
+        //determine if player is on a jumpable layer object.
         hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .5f, layerMask);
         Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
+
+        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), Vector2.down, .15f, layerMask);
+
+        //draw raycast used to detect if player can jump
+        if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f,0 ), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f,0 ) - new Vector3(0, .5f, 0), Color.blue);
+
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
         else isGrounded = false;
-        Debug.Log(isGrounded);
 
         //true if jump button is pressed
         bool pressingJump = Input.GetButton("Jump");
@@ -60,6 +68,17 @@ public class Player : MonoBehaviour
         pos.x += xAxis * speed * Time.deltaTime;
         transform.position = pos;
 
+        //used to check to see if moving will make player move off the screen
+        float xPos = pos.x + xAxis * speed * Time.deltaTime;
+        //if updating x position will move player off screen border, don't update x position
+        if (atScreenBorder(xPos)){
+            transform.position = pos;
+        }
+        //otherwise, update position as usual
+        else {
+            pos.x = xPos;
+            transform.position = pos;
+        }
     }
 
     void Update()
@@ -130,7 +149,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Jumpable"))
         {
             isGrounded = true;
-            // Debug.Log("isGrounded: " + isGrounded);
+            Debug.Log("isGrounded: " + isGrounded);
+
+            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
 
@@ -139,7 +160,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Jumpable"))
         {
             isGrounded = false;
-            // Debug.Log("isGrounded: " + isGrounded);
+            Debug.Log("isGrounded: " + isGrounded);
+            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
 }
