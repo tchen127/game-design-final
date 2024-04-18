@@ -137,3 +137,5 @@ MonoBehaviour:
   player: {fileID: 1061720139759794848, guid: 8a34fee8f52487b46a2c0d37269fc0a2, type: 3}
   followDistance: 2
   moveSpeed: 6
+  floatUpwardSpeed: 3
+  debugOn: 0

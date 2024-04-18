@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FollowerSpawner : MonoBehaviour
 {
-    
+
 
     [Header("Inscribed")]
     [SerializeField] private GameObject followerPrefab;
     //number of followers to be spawned
-    [SerializeField] private int followerNum = 5;
+    [SerializeField] private int maxFollowerNum = 5;
     //spawn delay, in seconds
     [SerializeField] private float spawnDelay = 1f;
     //time that level will last
@@ -30,12 +30,19 @@ public class FollowerSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeWaited > spawnDelay && currFollowers < followerNum)
+        //spawn followers will under maxFollowerNum and until levelTime runs out
+        if (currFollowers < maxFollowerNum && Time.time < levelTime)
         {
-            SpawnFollower();
-            timeWaited = 0;
+            if (timeWaited > spawnDelay && currFollowers < maxFollowerNum)
+            {
+                SpawnFollower();
+                //reset time waited so that next follower will spawn in  spawnDelay seconds
+                timeWaited = 0;
+                //increment follower count
+                currFollowers++;
+            }
+            else timeWaited += Time.deltaTime;
         }
-        else timeWaited += Time.deltaTime;
     }
 
     private void SpawnFollower()
@@ -52,11 +59,7 @@ public class FollowerSpawner : MonoBehaviour
         follower.transform.position = new Vector2(x, y);
         //increment currFollowers
         currFollowers++;
-        Debug.Log("currFollowers: " + currFollowers + "\nfollowerNum: " + followerNum);
-    }
 
-    //Program Flow
-    //get random x position within screen boundary
-    //instantiate follower prefab below screen w/ the random x position
-    //stop instantiating followers once the follower limit has been reached
+        //follower.GetComponent<Follower>().followDistance += .1f * currFollowers;
+    }
 }
