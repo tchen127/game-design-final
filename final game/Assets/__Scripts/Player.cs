@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
     {
         //determine if player is on a jumpable layer object.
         hit2D = Physics2D.Raycast(gameObject.transform.position, Vector2.down, raycastLength, layerMask);
+
         if (debugOn) Debug.DrawLine(gameObject.transform.position, gameObject.transform.position - new Vector3(0, raycastLength, 0), Color.blue);
+
 
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
