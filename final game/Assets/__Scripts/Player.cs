@@ -42,9 +42,12 @@ public class Player : MonoBehaviour
     {
         //determine if player is on a jumpable layer object.
         hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .5f, layerMask);
+        Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
+
+        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .15f, layerMask);
 
         //draw raycast used to detect if player can jump
-        if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
+        if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
 
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
@@ -81,7 +84,6 @@ public class Player : MonoBehaviour
         }
     }
 
-/*
     void Update()
     {
         if (mode == eMode.idle || mode == eMode.move)
@@ -114,7 +116,6 @@ public class Player : MonoBehaviour
                 {
                     isGrounded = false;
                 }
-                
                 if (isGrounded)
                 {
                     mode = eMode.jump;
@@ -126,7 +127,7 @@ public class Player : MonoBehaviour
         switch (mode)
         {
             case eMode.idle:
-                //rb.velocity = new Vector2(0, -speed);
+                rb.velocity = new Vector2(0, -speed);
                 break;
 
             case eMode.move:
@@ -138,17 +139,14 @@ public class Player : MonoBehaviour
                 break;
 
             case eMode.jump:
-                //rb.velocity = jumpVec;
+                rb.velocity = jumpVec;
                 break;
 
         }
 
     }
-    */
-    
 
 
-/*
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Jumpable"))
@@ -169,7 +167,6 @@ public class Player : MonoBehaviour
             if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
-*/
 
     /// <summary>
     /// Return true if player is at the side of the screen
