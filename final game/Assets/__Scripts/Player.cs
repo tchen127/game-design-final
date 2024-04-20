@@ -9,9 +9,7 @@ public class Player : MonoBehaviour
     public enum eMode { idle, move }
     private bool isGrounded = false;
     //rigidbody of player
-    //rigidbody of player
     private Rigidbody2D rb;
-    //width of the player in Unity units
     //width of the player in Unity units
     private float playerWidth;
 
@@ -21,7 +19,7 @@ public class Player : MonoBehaviour
     public int facing = 1;
     public eMode mode = eMode.idle;
 
-    [SerializeField] private float speed = 20;
+    [SerializeField] private float speed = 8;
 
     [Header("Jumping")]
     [SerializeField] private float jumpSpeed = 5;
@@ -56,13 +54,8 @@ public class Player : MonoBehaviour
         playerWidth = transform.localScale.x;
         if (debugOn) Debug.Log("playerWidth: " + playerWidth);
 
-        //set playerWidth
-        playerWidth = transform.localScale.x;
-        if (debugOn) Debug.Log("playerWidth: " + playerWidth);
-
     }
 
-    //use fixedupdate for any physics interactions
     //use fixedupdate for any physics interactions
     void FixedUpdate()
     {
@@ -129,29 +122,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-/*
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Jumpable"))
-        {
-            isGrounded = true;
-            Debug.Log("isGrounded: " + isGrounded);
-
-            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Jumpable"))
-        {
-            isGrounded = false;
-            Debug.Log("isGrounded: " + isGrounded);
-            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
-        }
-    }
-    */
 
     /// <summary>
     /// Return true if player is at the side of the screen
