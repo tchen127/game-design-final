@@ -123,13 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+
 --- !u!1001 &137740959
+
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -934,11 +937,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_LocalPosition.x
+
       value: 6.58
+
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_LocalPosition.y
+
       value: -1.67
+
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -974,6 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261895, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_Name
+
       value: Normal_Platform_Left (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1036,6 +1044,7 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
 --- !u!1001 &1523417682
+
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1044,7 +1053,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_RootOrder
+
       value: 9
+
       objectReference: {fileID: 0}
     - target: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1148,7 +1159,9 @@ PrefabInstance:
       value: Normal_Platform_Left (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+
   m_SourcePrefab: {fileID: 100100000, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
+
 --- !u!1 &1829211704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugOn: 0
   platformSquarePrefab: {fileID: 2612243185138892256, guid: f822f8ef6ab3a03499bbece5f6da2527, type: 3}
+
   prefabPlatforms: []
+
   Normal_Platform_MiddlePrefab: {fileID: 0}
   Normal_Platform_LeftPrefab: {fileID: 0}
   Normal_Platform_RightPrefab: {fileID: 0}
@@ -1271,6 +1286,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1001 &5592644193341873305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1332,3 +1348,4 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6391e063817f4254a975a41321a764aa, type: 3}
+

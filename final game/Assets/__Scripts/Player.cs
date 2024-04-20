@@ -7,12 +7,14 @@ public class Player : MonoBehaviour
 {
     private Animator anim;
     public enum eMode { idle, move }
-    //true if player is on a surface that they can jump from
     private bool isGrounded = false;
+    //rigidbody of player
     //rigidbody of player
     private Rigidbody2D rb;
     //width of the player in Unity units
+    //width of the player in Unity units
     private float playerWidth;
+
 
 
     public int dirHeld = -1;
@@ -20,9 +22,10 @@ public class Player : MonoBehaviour
     public eMode mode = eMode.idle;
 
     [SerializeField] private float speed = 20;
-    [SerializeField] private float jumpSpeed = 5;
 
     [Header("Jumping")]
+    [SerializeField] private float jumpSpeed = 5;
+
     //length of raycast sent down from player's transform to detect the ground
     [SerializeField] private float raycastLength = 2f;
     //layermask for the raycast to detect platforms (for jumping)
@@ -53,14 +56,21 @@ public class Player : MonoBehaviour
         playerWidth = transform.localScale.x;
         if (debugOn) Debug.Log("playerWidth: " + playerWidth);
 
+        //set playerWidth
+        playerWidth = transform.localScale.x;
+        if (debugOn) Debug.Log("playerWidth: " + playerWidth);
+
     }
 
+    //use fixedupdate for any physics interactions
     //use fixedupdate for any physics interactions
     void FixedUpdate()
     {
         //determine if player is on a jumpable layer object.
         hit2D = Physics2D.Raycast(gameObject.transform.position, Vector2.down, raycastLength, layerMask);
+
         if (debugOn) Debug.DrawLine(gameObject.transform.position, gameObject.transform.position - new Vector3(0, raycastLength, 0), Color.blue);
+
 
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
@@ -85,6 +95,7 @@ public class Player : MonoBehaviour
         //if updating x position will move player off screen border, don't update x position
         if (atScreenBorder(xPos))
         {
+            if (debugOn) Debug.Log("atScreenBorder");
             if (debugOn) Debug.Log("atScreenBorder");
             transform.position = pos;
         }
@@ -165,5 +176,5 @@ public class Player : MonoBehaviour
 
         return false;
     }
-
 }
+
