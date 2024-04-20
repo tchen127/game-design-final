@@ -62,7 +62,7 @@ public class Follower : MonoBehaviour
         //follow player as long as followingPlayer == true
         else
         {
-            Debug.Log("Following Player");
+            if (debugOn) Debug.Log("Following Player");
             FollowPlayer();
         }
     }

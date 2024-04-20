@@ -5,49 +5,64 @@ using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
-    public enum eMode { idle, move, jump }
+    private Animator anim;
+    public enum eMode { idle, move }
+    //true if player is on a surface that they can jump from
     private bool isGrounded = false;
+    //rigidbody of player
     private Rigidbody2D rb;
-    private float playerHeight;
+    //width of the player in Unity units
     private float playerWidth;
-    private RaycastHit2D hit2D;
-    private Vector2 jumpVec;
+
 
     public int dirHeld = -1;
     public int facing = 1;
     public eMode mode = eMode.idle;
 
-    private Vector2[] directions = new Vector2[]{
-        Vector2.right, Vector2.left};
-
     [SerializeField] private float speed = 20;
     [SerializeField] private float jumpSpeed = 5;
+
+    [Header("Jumping")]
+    //length of raycast sent down from player's transform to detect the ground
+    [SerializeField] private float raycastLength = 2f;
+    //layermask for the raycast to detect platforms (for jumping)
     [SerializeField] private LayerMask layerMask;
+    //holds result of downward raycast used for jump mechanic
+    private RaycastHit2D hit2D;
+    //velocity added to player when jumping (should only have a non-zero y component)
+    private Vector2 jumpVec;
 
     [Header("Debug")]
     [SerializeField] private bool debugOn;
 
-    void Start()
+    void Awake()
     {
         //get rigidbody component
         rb = GetComponent<Rigidbody2D>();
 
+        //get animator component
+        anim = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
         //set direction and magnitude of jump
         jumpVec = rb.velocity + new Vector2(0, jumpSpeed);
 
+        //set playerWidth
+        playerWidth = transform.localScale.x;
+        if (debugOn) Debug.Log("playerWidth: " + playerWidth);
+
     }
 
-    // Update is called once per frame
+    //use fixedupdate for any physics interactions
     void FixedUpdate()
     {
         //determine if player is on a jumpable layer object.
-        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .5f, layerMask);
-        Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
+        hit2D = Physics2D.Raycast(gameObject.transform.position, Vector2.down, raycastLength, layerMask);
 
-        hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .15f, layerMask);
+        if (debugOn) Debug.DrawLine(gameObject.transform.position, gameObject.transform.position - new Vector3(0, raycastLength, 0), Color.blue);
 
-        //draw raycast used to detect if player can jump
-        if (debugOn) Debug.DrawLine(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), gameObject.transform.position - new Vector3(0, (playerHeight) - .1f, 0) - new Vector3(0, .5f, 0), Color.blue);
 
         //isGrounded will be true if hit2D.collider is not null, otherwise it will be false
         if (hit2D.collider != null) isGrounded = true;
@@ -66,14 +81,13 @@ public class Player : MonoBehaviour
 
         //change player position based on input
         Vector2 pos = transform.position;
-        pos.x += xAxis * speed * Time.deltaTime;
-        transform.position = pos;
 
         //used to check to see if moving will make player move off the screen
         float xPos = pos.x + xAxis * speed * Time.deltaTime;
         //if updating x position will move player off screen border, don't update x position
         if (atScreenBorder(xPos))
         {
+            if (debugOn) Debug.Log("atScreenBorder");
             transform.position = pos;
         }
         //otherwise, update position as usual
@@ -86,67 +100,28 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (mode == eMode.idle || mode == eMode.move)
+
+        //dirHeld will be -1 if there is no input
+        dirHeld = -1;
+        //make dirHeld = 1 if input is to the right
+        if (Input.GetKey(KeyCode.RightArrow)) dirHeld = 1;
+        //make dirHeld = 0 if input is to the left
+        if (Input.GetKey(KeyCode.LeftArrow)) dirHeld = 0;
+
+        //Animation
+        if (dirHeld == -1)
         {
-            dirHeld = -1;
-            if (Input.GetKey(KeyCode.RightArrow)) dirHeld = 1;
-            if (Input.GetKey(KeyCode.LeftArrow)) dirHeld = 0;
-
-            if (dirHeld == -1)
-            {
-                mode = eMode.idle;
-            }
-            else
-            {
-                // facing = dirHeld;
-                mode = eMode.move;
-            }
-
-            // Jump 
-            if (Input.GetKey(KeyCode.Space))
-            {
-                // mode = eMode.jump;
-                hit2D = Physics2D.Raycast(gameObject.transform.position - new Vector3(0, (playerHeight / 2) - .1f, 0), Vector2.down, .5f, layerMask);
-
-                if (hit2D.collider != null)
-                {
-                    isGrounded = true;
-                }
-                else
-                {
-                    isGrounded = false;
-                }
-                if (isGrounded)
-                {
-                    mode = eMode.jump;
-                }
-            }
+            anim.speed = 0;
         }
-
-        // Act on the current mode
-        switch (mode)
+        else
         {
-            case eMode.idle:
-                rb.velocity = new Vector2(0, -speed);
-                break;
-
-            case eMode.move:
-                if (dirHeld != facing)
-                {
-                    transform.Rotate(0, 180, 0);
-                    facing = dirHeld;
-                }
-                break;
-
-            case eMode.jump:
-                rb.velocity = jumpVec;
-                break;
-
+            anim.Play("Sten_Walk_" + dirHeld);
+            anim.speed = 1;
         }
 
     }
 
-
+/*
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Jumpable"))
@@ -167,6 +142,7 @@ public class Player : MonoBehaviour
             if (debugOn) Debug.Log("isGrounded: " + isGrounded);
         }
     }
+    */
 
     /// <summary>
     /// Return true if player is at the side of the screen
