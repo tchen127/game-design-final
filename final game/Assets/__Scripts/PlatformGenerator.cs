@@ -88,11 +88,15 @@ public class PlatformGenerator : MonoBehaviour
                     GameObject squareRight = Instantiate<GameObject>(Normal_Platform_RightPrefab);
                     squareRight.transform.position = position;
                     squareRight.transform.SetParent(platform.transform);
-                // Else spawn middle piece of the platform  
+
+                // Else spawn middle piece of the platform
                 } else {
-                GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
-                squareMiddle.transform.position = position;
+                    GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
+                    squareMiddle.transform.position = position;
+                    squareMiddle.transform.SetParent(platform.transform);
                 }
+                // next square will be to the right by 1, so increase x by 1
+                x++;
             }
         } else {
             for (int i = 0; i < length; i++)
@@ -116,7 +120,6 @@ public class PlatformGenerator : MonoBehaviour
                 } else {
                     GameObject squareMiddle = Instantiate<GameObject>(Crumble_Platform_MiddlePrefab);
                     squareMiddle.transform.position = position;
-
                     squareMiddle.transform.SetParent(platform.transform);
                 }
                 // next square will be to the right by 1, so increase x by 1
@@ -131,4 +134,3 @@ public class PlatformGenerator : MonoBehaviour
 
     }
 }
-

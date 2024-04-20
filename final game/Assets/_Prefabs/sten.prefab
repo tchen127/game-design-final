@@ -160,8 +160,8 @@ MonoBehaviour:
   facing: 1
   mode: 0
   speed: 8
-  jumpSpeed: 8
-  raycastLength: 1
+  jumpSpeed: 15
+  raycastLength: 0.9
   layerMask:
     serializedVersion: 2
     m_Bits: 256
