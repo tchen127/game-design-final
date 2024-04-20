@@ -8,6 +8,9 @@ MonoImporter:
   - Normal_Platform_MiddlePrefab: {fileID: 7855163241684261895, guid: 6c6eb152b61d08e4880faec47986b4a9, type: 3}
   - Normal_Platform_LeftPrefab: {fileID: 7855163241684261895, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
   - Normal_Platform_RightPrefab: {fileID: 7855163241684261895, guid: c71fde90fb8c6654598e6b6a9647e578, type: 3}
+  - Crumble_Platform_MiddlePrefab: {fileID: 4526561790573878474, guid: 4b724dd9e75794318b7b0497565a7e6c, type: 3}
+  - Crumble_Platform_LeftPrefab: {fileID: 4526561790573878474, guid: d76bb16ba022146e8b375615528b5524, type: 3}
+  - Crumble_Platform_RightPrefab: {fileID: 4526561790573878474, guid: 004a39c8c8d444082a86ed181e8fdc02, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
