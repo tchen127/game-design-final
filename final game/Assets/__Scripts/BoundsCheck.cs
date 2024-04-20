@@ -36,6 +36,7 @@ public class BoundsCheck : MonoBehaviour
 
         // ratio defined by aspect ratio of game pane (portrait)
         camWidth = camHeight * Camera.main.aspect;
+
     }
 /*
     void update() {
@@ -91,40 +92,30 @@ public class BoundsCheck : MonoBehaviour
 
         // Logic for detecting whether player spends too 
         // much time close too close to black hole
+        Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));  
         if (pos.y > (camHeight - 5)) {   
             Debug.Log(camHeight - 5);                                           // e
             if (eventTimeTop == 0) {
                 eventTimeTop = Time.time;
-                timespanTop = eventTimeTop + 1;
+                timespanTop = eventTimeTop + 3;
             }
 
             if (timespanTop < Time.time & pos.y > (camHeight - 5)){
+                SceneManager.LoadScene("GameOverBlackHole");
                 Debug.Log("BLACK HOLE GOT YA");
             }
             
             //pos.y = camHeight;                                                // e
         }
-        /*
+        
         // Logic for detecting player off screen at bottom for x amount of time
-        if (pos.y < -camHeight) {                                             // e
-            Debug.Log("Below Camera Bottom");
-            if (eventTimeBottom == 0) {
-                eventTimeBottom = Time.time;
-                timespanBottom = eventTimeBottom + 2;
-            }
-
-            if (timespanBottom < Time.time & pos.y < -camHeight){
-                Debug.Log("FELL TO YOUR DEATH");
-                SceneManager.LoadScene("GameOver");
-            }
-            pos.y = -camHeight;                                               // e  
-        }
-        */
         if (pos.y < -camHeight) {  
             startText.text = "Falling!";
             Debug.Log("Below Camera Bottom");
+            // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
+            // When time reaches zero load game over scene 
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOver");
             }
