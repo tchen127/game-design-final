@@ -42,7 +42,7 @@ public class BoundsCheck : MonoBehaviour
     void update() {
         Vector2 pos = transform.position;
 
-        if (pos.y < -camHeight) {  
+        if (pos.y < -camHeight) {
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
             if (timeLeft < 0) {
@@ -90,11 +90,26 @@ public class BoundsCheck : MonoBehaviour
             screenLocs = eScreenLocs.onScreen;
         }
 
-        // Logic for detecting whether player spends too 
+        if ((pos.y < (camHeight - 7)) && (pos.y > -camHeight)) {
+            Debug.Log("HERE");
+            timeLeft = 3.0f;
+            startText.text = " ";
+        }
+
+        // Logic for detecting whether player spends too
         // much time close too close to black hole
-        Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));  
-        if (pos.y > (camHeight - 5)) {   
-            Debug.Log(camHeight - 5);                                           // e
+        Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
+        if (pos.y > (camHeight - 7)) {
+            Debug.Log(camHeight - 7);
+            startText.text = "Black Hole Power is too STRONG!";
+            // Subtrack time and update onscreen timer
+            timeLeft -= Time.deltaTime;
+            startText.text = (timeLeft).ToString("0");
+            // When time reaches zero load game over scene
+            if (timeLeft < 0) {
+                SceneManager.LoadScene("GameOverBlackHole");
+            }
+            /*                                         // e
             if (eventTimeTop == 0) {
                 eventTimeTop = Time.time;
                 timespanTop = eventTimeTop + 3;
@@ -104,18 +119,18 @@ public class BoundsCheck : MonoBehaviour
                 SceneManager.LoadScene("GameOverBlackHole");
                 Debug.Log("BLACK HOLE GOT YA");
             }
-            
+            */
             //pos.y = camHeight;                                                // e
         }
-        
+
         // Logic for detecting player off screen at bottom for x amount of time
-        if (pos.y < -camHeight) {  
+        if (pos.y < -camHeight) {
             startText.text = "Falling!";
             Debug.Log("Below Camera Bottom");
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
-            // When time reaches zero load game over scene 
+            // When time reaches zero load game over scene
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOver");
             }
