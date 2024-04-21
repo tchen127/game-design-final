@@ -8,6 +8,9 @@ public class Follower : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    //animator that holds walking animations of follower
+    private Animator anim;
+
 
     [Header("Inscribed")]
     [SerializeField] private Transform player;
@@ -31,11 +34,19 @@ public class Follower : MonoBehaviour
     private Vector2 vecToPlayer;
 
 
+    void Awake(){
+        //get the RigidBody2D for this GameObject
+        rb = this.GetComponent<Rigidbody2D>();
+
+        //get animator for this GameObject
+        anim = this.GetComponent<Animator>();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //get the RigidBody2D for this GameObject
-        rb = this.GetComponent<Rigidbody2D>();
+        
 
         //get transform of player
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -72,6 +83,9 @@ public class Follower : MonoBehaviour
 
         //follower will only control movement in x direction, so y component = 0
         vecToPlayer = player.position - transform.position;
+        
+        //animation should not be playing until follower starts to move
+        anim.speed = 0;
 
         //only move Follower if it is far enough away
         //don't move Follower if it is below player (if follower gets ahead, player can catch up)
@@ -80,6 +94,7 @@ public class Follower : MonoBehaviour
             //move Follower towards the player
             vecToPlayer.y = 0;
             moveCharacter(vecToPlayer);
+            AnimateFollower(vecToPlayer);
         }
     }
 
@@ -98,5 +113,11 @@ public class Follower : MonoBehaviour
         Vector2 position = transform.position;
         position.x = position.x + (direction.x * moveSpeed * Time.deltaTime);
         transform.position = position;
+    }
+
+    private void AnimateFollower(Vector2 direction){
+        if (direction.x > 0) anim.Play("NPC_Walking_1");
+        else if (direction.x < 0) anim.Play("NPC_Walking_0");
+        anim.speed = 1;
     }
 }

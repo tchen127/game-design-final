@@ -27,6 +27,9 @@ public class BoundsCheck : MonoBehaviour
     public float camWidth;
     public float camHeight;
 
+    [Header("Debug")]
+    [SerializeField] private bool debugOn;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -98,6 +101,7 @@ public class BoundsCheck : MonoBehaviour
 
         // Logic for detecting whether player spends too
         // much time close too close to black hole
+
         Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
         if (pos.y > (camHeight - 7)) {
             Debug.Log(camHeight - 7);
@@ -117,7 +121,7 @@ public class BoundsCheck : MonoBehaviour
 
             if (timespanTop < Time.time & pos.y > (camHeight - 5)){
                 SceneManager.LoadScene("GameOverBlackHole");
-                Debug.Log("BLACK HOLE GOT YA");
+                if (debugOn) Debug.Log("BLACK HOLE GOT YA");
             }
             */
             //pos.y = camHeight;                                                // e
@@ -126,7 +130,7 @@ public class BoundsCheck : MonoBehaviour
         // Logic for detecting player off screen at bottom for x amount of time
         if (pos.y < -camHeight) {
             startText.text = "Falling!";
-            Debug.Log("Below Camera Bottom");
+            if (debugOn) Debug.Log("Below Camera Bottom");
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
