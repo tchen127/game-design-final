@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5592644194147640192}
   m_Layer: 7
   m_Name: sten
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,9 +160,9 @@ MonoBehaviour:
   facing: 1
   mode: 0
   speed: 8
-  jumpSpeed: 8
-  raycastLength: 2
+  jumpSpeed: 15
+  raycastLength: 0.9
   layerMask:
     serializedVersion: 2
     m_Bits: 256
-  debugOn: 0
+  debugOn: 1
