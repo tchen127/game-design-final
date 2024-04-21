@@ -168,6 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followDistance: 1
-  moveSpeed: 5
-  floatUpwardSpeed: 0
+  moveSpeed: 7
+  floatUpwardSpeed: 2
   debugOn: 0

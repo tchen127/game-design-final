@@ -12,14 +12,15 @@ EditorBuildSettings:
     path: Assets/_Scenes/1_start_scene.unity
     guid: 40645e2c1bff14e219f66033b5bf9f6c
   - enabled: 0
-
-    path: Assets/_Scenes/testing_scene.unity
-    guid: f7bbf7c518cf143d58462a509782f951
-
-  - enabled: 1
-    path: Assets/_Scenes/GameOver.unity
-    guid: 82643784450eb4b899aeda7a14d575b6
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/_Scenes/GameOverBlackHole.unity
     guid: d7b25dd8862e84bb1a8ef32efe25f1d0
+  - enabled: 1
+    path: Assets/_Scenes/You_Win.unity
+    guid: 94bd6d79f1b2c894995bfbc793ad9ad4
   m_configObjects: {}

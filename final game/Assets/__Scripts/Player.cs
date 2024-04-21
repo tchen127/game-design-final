@@ -86,16 +86,26 @@ public class Player : MonoBehaviour
         //used to check to see if moving will make player move off the screen
         float xPos = pos.x + xAxis * speed * Time.deltaTime;
         //if updating x position will move player off screen border, don't update x position
-        if (atScreenBorder(xPos))
+        /*if (atScreenBorder(xPos))
         {
             if (debugOn) Debug.Log("atScreenBorder");
             if (debugOn) Debug.Log("atScreenBorder");
             transform.position = pos;
         }
+        */
         //otherwise, update position as usual
-        else
-        {
+        //else
+        //{
             pos.x = xPos;
+            transform.position = pos;
+        //}
+
+        if (transform.position.x >= Camera.main.ViewportToWorldPoint(new Vector3 (1, 0, 0)).x){
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(1,0,0)).x;
+            transform.position = pos;
+        }
+        else if (transform.position.x <= Camera.main.ViewportToWorldPoint(new Vector3 (0, 0, 0)).x){
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(1,0,0)).x;
             transform.position = pos;
         }
     }
