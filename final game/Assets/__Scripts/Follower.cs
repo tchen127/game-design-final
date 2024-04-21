@@ -33,7 +33,16 @@ public class Follower : MonoBehaviour
     //will hold vector from follower to player, updated in FixedUpdate
     private Vector2 vecToPlayer;
 
+    // how long the follower can remain off-screen before it dies
+    public float defaultDeathTimer = 3f;
+    private float deathTimer;
 
+    // reference to Follower Count object (text object), which will hold the value for total follower count
+    public GameObject followerCount;
+
+    // the y position that is at the bottom of the camera
+    public float bottomY;
+    
     void Awake(){
         //get the RigidBody2D for this GameObject
         rb = this.GetComponent<Rigidbody2D>();
@@ -46,11 +55,15 @@ public class Follower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        deathTimer = defaultDeathTimer;
 
         //get transform of player
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        Vector3 bottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 1));
+        bottomY = bottom.y;
     }
+
 
     void FixedUpdate()
     {
@@ -67,6 +80,7 @@ public class Follower : MonoBehaviour
             if (Math.Abs(vecToPlayer.magnitude) < 1)
             {
                 followingPlayer = true;
+                followerCount.GetComponent<FollowerCount>().IncrementFollowerCount();
             }
         }
 
@@ -74,6 +88,7 @@ public class Follower : MonoBehaviour
         else
         {
             if (debugOn) Debug.Log("Following Player");
+            CheckIfOffScreen();
             FollowPlayer();
         }
     }
@@ -119,5 +134,31 @@ public class Follower : MonoBehaviour
         if (direction.x > 0) anim.Play("NPC_Walking_1");
         else if (direction.x < 0) anim.Play("NPC_Walking_0");
         anim.speed = 1;
+    }
+
+    // checks if the follower is off the bottom of the screen. if it is, keep track of a timer that, if exceeded, kills the follower
+    private void CheckIfOffScreen()
+    {
+        if (transform.position.y < bottomY)
+        {
+            deathTimer -= Time.deltaTime;
+
+            if (deathTimer <= 0f)
+            {
+                Die();
+            }
+        }
+        else {
+            // reset death timer when on screen again
+            deathTimer = defaultDeathTimer;
+        }
+        Debug.Log(deathTimer);
+    }
+
+    // destroy the follower gameobject, then decrement the global follower count
+    private void Die()
+    {
+        Destroy(gameObject);
+        followerCount.GetComponent<FollowerCount>().DecrementFollowerCount();
     }
 }
