@@ -493,6 +493,7 @@ MonoBehaviour:
   screenLocs: 0
   camWidth: 0
   camHeight: 0
+  debugOn: 0
 --- !u!1001 &1328790035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,7 +867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985150924489601924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -69.8, z: 10}
+  m_LocalPosition: {x: 0, y: -15, z: 10}
   m_LocalScale: {x: 3, y: 4, z: 1}
   m_Children:
   - {fileID: 3985150924285108583}

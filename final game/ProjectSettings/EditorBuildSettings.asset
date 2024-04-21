@@ -11,10 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/1_start_scene.unity
     guid: 40645e2c1bff14e219f66033b5bf9f6c
-  - enabled: 1
-    path: Assets/_Scenes/testing_scene.unity
-    guid: f7bbf7c518cf143d58462a509782f951
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/_Scenes/GameOver.unity
     guid: 82643784450eb4b899aeda7a14d575b6
+  - enabled: 1
+    path: Assets/_Scenes/Prototype.unity
+    guid: a63ccf1f6e0caac4792f064551905172
+  - enabled: 1
+    path: Assets/_Scenes/You_Win.unity
+    guid: 94bd6d79f1b2c894995bfbc793ad9ad4
   m_configObjects: {}
