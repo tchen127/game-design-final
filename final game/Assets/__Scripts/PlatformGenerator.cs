@@ -89,28 +89,14 @@ public class PlatformGenerator : MonoBehaviour
                     squareRight.transform.position = position;
                     squareRight.transform.SetParent(platform.transform);
 
-            // First iteration spawn the left edge of the platform
-            if (i == 0)
-            {
-                GameObject squareLeft = Instantiate<GameObject>(Normal_Platform_LeftPrefab);
-                squareLeft.transform.position = position;
-                squareLeft.transform.SetParent(platform.transform);
-
-                // Last iteration spawn the right edge of the platform
-            }
-            else if (i == (length - 1))
-            {
-                GameObject squareRight = Instantiate<GameObject>(Normal_Platform_RightPrefab);
-                squareRight.transform.position = position;
-                squareRight.transform.SetParent(platform.transform);
-
                 // Else spawn middle piece of the platform
-            }
-            else
-            {
-                GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
-                squareMiddle.transform.position = position;
-
+                } else {
+                    GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
+                    squareMiddle.transform.position = position;
+                    squareMiddle.transform.SetParent(platform.transform);
+                }
+                // next square will be to the right by 1, so increase x by 1
+                x++;
             }
         } else {
             for (int i = 0; i < length; i++)
@@ -134,10 +120,8 @@ public class PlatformGenerator : MonoBehaviour
                 } else {
                     GameObject squareMiddle = Instantiate<GameObject>(Crumble_Platform_MiddlePrefab);
                     squareMiddle.transform.position = position;
-
                     squareMiddle.transform.SetParent(platform.transform);
                 }
-
                 // next square will be to the right by 1, so increase x by 1
                 x++;
             }

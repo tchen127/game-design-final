@@ -36,12 +36,13 @@ public class BoundsCheck : MonoBehaviour
 
         // ratio defined by aspect ratio of game pane (portrait)
         camWidth = camHeight * Camera.main.aspect;
+
     }
 /*
     void update() {
         Vector2 pos = transform.position;
 
-        if (pos.y < -camHeight) {  
+        if (pos.y < -camHeight) {
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
             if (timeLeft < 0) {
@@ -61,6 +62,7 @@ public class BoundsCheck : MonoBehaviour
         // Restrict the X position to camWidth and some offset later
         if (pos.x > camWidth)
         {
+            timeLeft = 3.0f;
             pos.x = camWidth;                                                // e
         }
         if (pos.x < -camWidth)
@@ -70,6 +72,7 @@ public class BoundsCheck : MonoBehaviour
 
         // Restrict the Y position to camHeight
         if (pos.y > camHeight)
+
         {
             //pos.y = camHeight;
             screenLocs |= eScreenLocs.offUp;                                                // e
@@ -86,23 +89,23 @@ public class BoundsCheck : MonoBehaviour
             transform.position = pos;
             screenLocs = eScreenLocs.onScreen;
         }
-        
+
         if ((pos.y < (camHeight - 7)) && (pos.y > -camHeight)) {
             Debug.Log("HERE");
             timeLeft = 3.0f;
             startText.text = " ";
         }
 
-        // Logic for detecting whether player spends too 
+        // Logic for detecting whether player spends too
         // much time close too close to black hole
-        Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));  
-        if (pos.y > (camHeight - 7)) {   
-            Debug.Log(camHeight - 7);  
+        Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
+        if (pos.y > (camHeight - 7)) {
+            Debug.Log(camHeight - 7);
             startText.text = "Black Hole Power is too STRONG!";
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
-            // When time reaches zero load game over scene 
+            // When time reaches zero load game over scene
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOverBlackHole");
             }
@@ -119,15 +122,15 @@ public class BoundsCheck : MonoBehaviour
             */
             //pos.y = camHeight;                                                // e
         }
-        
+
         // Logic for detecting player off screen at bottom for x amount of time
-        if (pos.y < -camHeight) {  
+        if (pos.y < -camHeight) {
             startText.text = "Falling!";
             Debug.Log("Below Camera Bottom");
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
-            // When time reaches zero load game over scene 
+            // When time reaches zero load game over scene
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOver");
             }
