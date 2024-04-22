@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Platform_Crumble : MonoBehaviour
 {
+
     // public Collider2D platformCollider;
     // public SpriteRenderer spriteRenderer;
     public Animator animator;

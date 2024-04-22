@@ -8,6 +8,9 @@ public class Follower : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
 
+    //animator that holds walking animations of follower
+    private Animator anim;
+
 
     [Header("Inscribed")]
     [SerializeField] private Transform player;
@@ -26,23 +29,43 @@ public class Follower : MonoBehaviour
 
     //false until player gets close enough to follower, then stays true
     private bool followingPlayer = false;
-    public int dirHeld = -1;
-    private Animator anim;
 
     //will hold vector from follower to player, updated in FixedUpdate
     private Vector2 vecToPlayer;
 
+    // how long the follower can remain off-screen before it dies
+    public float defaultDeathTimer = 3f;
+    private float deathTimer;
+
+    // reference to Follower Count object (text object), which will hold the value for total follower count
+    public GameObject followerCount;
+
+    // the y position that is at the bottom of the camera
+    public float bottomY;
+    
+    void Awake(){
+        //get the RigidBody2D for this GameObject
+        rb = this.GetComponent<Rigidbody2D>();
+
+        //get animator for this GameObject
+        anim = this.GetComponent<Animator>();
+
+        //attach the followerCount text object to this follower
+        followerCount = GameObject.FindGameObjectWithTag("Follower Count");
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        //get the RigidBody2D for this GameObject
-        rb = this.GetComponent<Rigidbody2D>();
+        deathTimer = defaultDeathTimer;
 
         //get transform of player
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        Vector3 bottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 1));
+        bottomY = bottom.y;
     }
+
 
     void FixedUpdate()
     {
@@ -59,6 +82,9 @@ public class Follower : MonoBehaviour
             if (Math.Abs(vecToPlayer.magnitude) < 1)
             {
                 followingPlayer = true;
+                followerCount.GetComponent<FollowerCount>().IncrementFollowerCount();
+                if (debugOn) Debug.Log("following player");
+
             }
         }
 
@@ -66,6 +92,7 @@ public class Follower : MonoBehaviour
         else
         {
             if (debugOn) Debug.Log("Following Player");
+            CheckIfOffScreen();
             FollowPlayer();
         }
     }
@@ -75,6 +102,9 @@ public class Follower : MonoBehaviour
 
         //follower will only control movement in x direction, so y component = 0
         vecToPlayer = player.position - transform.position;
+        
+        //animation should not be playing until follower starts to move
+        anim.speed = 0;
 
         //only move Follower if it is far enough away
         //don't move Follower if it is below player (if follower gets ahead, player can catch up)
@@ -83,6 +113,7 @@ public class Follower : MonoBehaviour
             //move Follower towards the player
             vecToPlayer.y = 0;
             moveCharacter(vecToPlayer);
+            AnimateFollower(vecToPlayer);
         }
     }
 
@@ -101,5 +132,37 @@ public class Follower : MonoBehaviour
         Vector2 position = transform.position;
         position.x = position.x + (direction.x * moveSpeed * Time.deltaTime);
         transform.position = position;
+    }
+
+    private void AnimateFollower(Vector2 direction){
+        if (direction.x > 0) anim.Play("NPC_Walking_1");
+        else if (direction.x < 0) anim.Play("NPC_Walking_0");
+        anim.speed = 1;
+    }
+
+    // checks if the follower is off the bottom of the screen. if it is, keep track of a timer that, if exceeded, kills the follower
+    private void CheckIfOffScreen()
+    {
+        if (transform.position.y < bottomY)
+        {
+            deathTimer -= Time.deltaTime;
+
+            if (deathTimer <= 0f)
+            {
+                Die();
+            }
+        }
+        else {
+            // reset death timer when on screen again
+            deathTimer = defaultDeathTimer;
+        }
+        Debug.Log(deathTimer);
+    }
+
+    // destroy the follower gameobject, then decrement the global follower count
+    private void Die()
+    {
+        Destroy(gameObject);
+        followerCount.GetComponent<FollowerCount>().DecrementFollowerCount();
     }
 }

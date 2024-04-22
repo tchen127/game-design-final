@@ -27,6 +27,13 @@ public class BoundsCheck : MonoBehaviour
     public float camWidth;
     public float camHeight;
 
+    [Header("Black Hole Size")]
+    //determines how far down the black hole reaches from the top of the screen
+    [SerializeField] private float blackHoleSize;
+
+    [Header("Debug")]
+    [SerializeField] private bool debugOn;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,12 +43,13 @@ public class BoundsCheck : MonoBehaviour
 
         // ratio defined by aspect ratio of game pane (portrait)
         camWidth = camHeight * Camera.main.aspect;
+
     }
 /*
     void update() {
         Vector2 pos = transform.position;
 
-        if (pos.y < -camHeight) {  
+        if (pos.y < -camHeight) {
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
             if (timeLeft < 0) {
@@ -89,42 +97,48 @@ public class BoundsCheck : MonoBehaviour
             screenLocs = eScreenLocs.onScreen;
         }
 
-        // Logic for detecting whether player spends too 
+        if ((pos.y < (camHeight - 7)) && (pos.y > -camHeight)) {
+            if (debugOn) Debug.Log("HERE");
+            timeLeft = 3.0f;
+            startText.text = " ";
+        }
+
+        // Logic for detecting whether player spends too
         // much time close too close to black hole
-        if (pos.y > (camHeight - 5)) {   
-            Debug.Log(camHeight - 5);                                           // e
+
+        if (debugOn) Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
+        if (pos.y > (camHeight - blackHoleSize)) {
+            if (debugOn) Debug.Log(camHeight - blackHoleSize);
+            startText.text = "Black Hole Power is too STRONG!";
+            // Subtrack time and update onscreen timer
+            timeLeft -= Time.deltaTime;
+            startText.text = (timeLeft).ToString("0");
+            // When time reaches zero load game over scene
+            if (timeLeft < 0) {
+                SceneManager.LoadScene("GameOverBlackHole");
+            }
+            /*                                         // e
             if (eventTimeTop == 0) {
                 eventTimeTop = Time.time;
-                timespanTop = eventTimeTop + 1;
+                timespanTop = eventTimeTop + 3;
             }
 
             if (timespanTop < Time.time & pos.y > (camHeight - 5)){
-                Debug.Log("BLACK HOLE GOT YA");
+                SceneManager.LoadScene("GameOverBlackHole");
+                if (debugOn) Debug.Log("BLACK HOLE GOT YA");
             }
-            
+            */
             //pos.y = camHeight;                                                // e
         }
-        /*
-        // Logic for detecting player off screen at bottom for x amount of time
-        if (pos.y < -camHeight) {                                             // e
-            Debug.Log("Below Camera Bottom");
-            if (eventTimeBottom == 0) {
-                eventTimeBottom = Time.time;
-                timespanBottom = eventTimeBottom + 2;
-            }
 
-            if (timespanBottom < Time.time & pos.y < -camHeight){
-                Debug.Log("FELL TO YOUR DEATH");
-                SceneManager.LoadScene("GameOver");
-            }
-            pos.y = -camHeight;                                               // e  
-        }
-        */
-        if (pos.y < -camHeight) {  
+        // Logic for detecting player off screen at bottom for x amount of time
+        if (pos.y < -camHeight) {
             startText.text = "Falling!";
-            Debug.Log("Below Camera Bottom");
+            if (debugOn) Debug.Log("Below Camera Bottom");
+            // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
+            // When time reaches zero load game over scene
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOver");
             }

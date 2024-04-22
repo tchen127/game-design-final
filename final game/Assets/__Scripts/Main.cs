@@ -45,4 +45,5 @@ public class Main : MonoBehaviour
 
         Invoke(nameof(SpawnPlatform), 1f / platformSpawnPerSecond);
     }
+
 }

@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     private Animator anim;
     public enum eMode { idle, move }
-    //true if player is on a surface that they can jump from
     private bool isGrounded = false;
     //rigidbody of player
     private Rigidbody2D rb;
@@ -15,14 +14,16 @@ public class Player : MonoBehaviour
     private float playerWidth;
 
 
+
     public int dirHeld = -1;
     public int facing = 1;
     public eMode mode = eMode.idle;
 
-    [SerializeField] private float speed = 20;
-    [SerializeField] private float jumpSpeed = 5;
+    [SerializeField] private float speed = 8;
 
     [Header("Jumping")]
+    [SerializeField] private float jumpSpeed = 5;
+
     //length of raycast sent down from player's transform to detect the ground
     [SerializeField] private float raycastLength = 2f;
     //layermask for the raycast to detect platforms (for jumping)
@@ -84,23 +85,23 @@ public class Player : MonoBehaviour
 
         //used to check to see if moving will make player move off the screen
         float xPos = pos.x + xAxis * speed * Time.deltaTime;
-        //if updating x position will move player off screen border, don't update x position
-        if (atScreenBorder(xPos))
-        {
-            if (debugOn) Debug.Log("atScreenBorder");
-            transform.position = pos;
-        }
-        //otherwise, update position as usual
-        else
-        {
-            pos.x = xPos;
-            transform.position = pos;
-        }
-    }
 
-    public int Direction
-    {
-        get { return dirHeld; }
+        pos.x = xPos;
+        transform.position = pos;
+
+        //don't let player go off right side of screen
+        if (transform.position.x >= Camera.main.ViewportToWorldPoint(new Vector3(.95f, 0, 0)).x)
+        {
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(.95f, 0, 0)).x;
+            transform.position = pos;
+        }
+        //don't let player go off left side of screen
+        else if (transform.position.x <= Camera.main.ViewportToWorldPoint(new Vector3(.05f, 0, 0)).x)
+        {
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(.05f, 0, 0)).x;
+            transform.position = pos;
+        }
+
     }
 
     void Update()
@@ -126,29 +127,6 @@ public class Player : MonoBehaviour
 
     }
 
-    /*
-        void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Jumpable"))
-            {
-                isGrounded = true;
-                Debug.Log("isGrounded: " + isGrounded);
-
-                if (debugOn) Debug.Log("isGrounded: " + isGrounded);
-            }
-        }
-
-        void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Jumpable"))
-            {
-                isGrounded = false;
-                Debug.Log("isGrounded: " + isGrounded);
-                if (debugOn) Debug.Log("isGrounded: " + isGrounded);
-            }
-        }
-        */
-
     /// <summary>
     /// Return true if player is at the side of the screen
     /// Can alter width of character to get closer/farther from the border
@@ -172,5 +150,6 @@ public class Player : MonoBehaviour
 
         return false;
     }
-
 }
+
+
