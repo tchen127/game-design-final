@@ -395,13 +395,8 @@ MonoBehaviour:
   Crumble_Platform_MiddlePrefab: {fileID: 6222802237616220921, guid: 2320014d686dd4eb9958fa47c58854c6, type: 3}
   Crumble_Platform_LeftPrefab: {fileID: 2004217450677247046, guid: 10296dc892442442b991d327337211ea, type: 3}
   Crumble_Platform_RightPrefab: {fileID: 4508752455782755084, guid: 5a758334b10fd435fbc9e22ce088a5aa, type: 3}
-<<<<<<< Updated upstream
-  distanceFromCameraBottom: -0.1
-  spawnDelay: 0.8
-=======
   distanceFromCameraBottom: -0.2
   spawnDelay: 1
->>>>>>> Stashed changes
   platformSpeed: 4
 --- !u!114 &247281125
 MonoBehaviour:
@@ -418,7 +413,7 @@ MonoBehaviour:
   followerPrefab: {fileID: 2776341206605835871, guid: 8058c1b3e8f38b547aed66b58608ec63, type: 3}
   maxFollowerNum: 10
   spawnDelay: 2
-  levelTime: 30
+  stopSpawningTime: 20
 --- !u!1 &570162991
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &781654016
 GameObject:
@@ -602,72 +597,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7855163241684261888, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
   m_PrefabInstance: {fileID: 857632803}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1177551556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1177551559}
-  - component: {fileID: 1177551558}
-  - component: {fileID: 1177551557}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1177551557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177551556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1177551558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177551556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1177551559
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177551556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1213283088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -743,19 +672,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 3
-<<<<<<< Updated upstream
-  startText: {fileID: 1738291286}
-  screenLocs: 0
-  camWidth: 0
-  camHeight: 0
-  BlackHoleEffectHeight: 2
-=======
   startText: {fileID: 1365919551}
   screenLocs: 0
   camWidth: 0
   camHeight: 0
   blackHoleSize: 0
->>>>>>> Stashed changes
   debugOn: 0
 --- !u!1001 &1328790035
 PrefabInstance:
@@ -996,7 +917,7 @@ RectTransform:
   - {fileID: 1365919550}
   - {fileID: 4393635873393711273}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
