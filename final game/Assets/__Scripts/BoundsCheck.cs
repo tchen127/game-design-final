@@ -27,16 +27,9 @@ public class BoundsCheck : MonoBehaviour
     public float camWidth;
     public float camHeight;
 
-<<<<<<< Updated upstream
-    [Header("Boundaries")]
-    //determines how far from the top of the screen the black hole starts to affect the player
-    //a heigher value gives a lower height needed for the player to be affected by the black hole
-    [SerializeField] private float BlackHoleEffectHeight = 2;
-=======
     [Header("Black Hole Size")]
     //determines how far down the black hole reaches from the top of the screen
     [SerializeField] private float blackHoleSize;
->>>>>>> Stashed changes
 
     [Header("Debug")]
     [SerializeField] private bool debugOn;
@@ -114,13 +107,8 @@ public class BoundsCheck : MonoBehaviour
         // much time close too close to black hole
 
         if (debugOn) Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
-<<<<<<< Updated upstream
-        if (pos.y > (camHeight - BlackHoleEffectHeight)) {
-            if (debugOn) Debug.Log(camHeight - BlackHoleEffectHeight);
-=======
         if (pos.y > (camHeight - blackHoleSize)) {
             if (debugOn) Debug.Log(camHeight - blackHoleSize);
->>>>>>> Stashed changes
             startText.text = "Black Hole Power is too STRONG!";
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
