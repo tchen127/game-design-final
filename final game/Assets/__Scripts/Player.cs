@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
             pos.x = Camera.main.ViewportToWorldPoint(new Vector3(.05f, 0, 0)).x;
             transform.position = pos;
         }
+
     }
 
     void Update()
