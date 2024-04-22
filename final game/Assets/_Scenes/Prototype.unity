@@ -395,13 +395,8 @@ MonoBehaviour:
   Crumble_Platform_MiddlePrefab: {fileID: 6222802237616220921, guid: 2320014d686dd4eb9958fa47c58854c6, type: 3}
   Crumble_Platform_LeftPrefab: {fileID: 2004217450677247046, guid: 10296dc892442442b991d327337211ea, type: 3}
   Crumble_Platform_RightPrefab: {fileID: 4508752455782755084, guid: 5a758334b10fd435fbc9e22ce088a5aa, type: 3}
-<<<<<<< Updated upstream
-  distanceFromCameraBottom: -0.1
-  spawnDelay: 0.8
-=======
   distanceFromCameraBottom: -0.2
   spawnDelay: 1
->>>>>>> Stashed changes
   platformSpeed: 4
 --- !u!114 &247281125
 MonoBehaviour:
@@ -743,19 +738,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 3
-<<<<<<< Updated upstream
-  startText: {fileID: 1738291286}
-  screenLocs: 0
-  camWidth: 0
-  camHeight: 0
-  BlackHoleEffectHeight: 2
-=======
   startText: {fileID: 1365919551}
   screenLocs: 0
   camWidth: 0
   camHeight: 0
   blackHoleSize: 0
->>>>>>> Stashed changes
   debugOn: 0
 --- !u!1001 &1328790035
 PrefabInstance:
