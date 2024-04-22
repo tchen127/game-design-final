@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Jumpable
+  - Follower Count
   layers:
   - Default
   - TransparentFX

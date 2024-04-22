@@ -13,16 +13,21 @@ public class FollowerSpawner : MonoBehaviour
     //spawn delay, in seconds
     [SerializeField] private float spawnDelay = 1f;
     //time that level will last
-    [SerializeField] private float levelTime = 20f;
+    [SerializeField] private float stopSpawningTime = 20f;
 
     //number of followers that have been spawned
     private float currFollowers = 0;
     //time since last follower was spawned
     float timeWaited;
+    //time that the level has been running. set to 0 in start method
+    float levelTime;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        //time that level has been running
+        levelTime = 0;
+
         //start counting time waited since last follower spawn (will be 0 during first frame)
         timeWaited = 0;
     }
@@ -31,7 +36,7 @@ public class FollowerSpawner : MonoBehaviour
     void Update()
     {
         //spawn followers will under maxFollowerNum and until levelTime runs out
-        if (currFollowers < maxFollowerNum && Time.time < levelTime)
+        if (currFollowers < maxFollowerNum && Time.time < stopSpawningTime)
         {
             if (timeWaited > spawnDelay && currFollowers < maxFollowerNum)
             {
@@ -60,6 +65,5 @@ public class FollowerSpawner : MonoBehaviour
         //increment currFollowers
         currFollowers++;
 
-        //follower.GetComponent<Follower>().followDistance += .1f * currFollowers;
     }
 }
