@@ -26,6 +26,8 @@ public class Follower : MonoBehaviour
 
     //false until player gets close enough to follower, then stays true
     private bool followingPlayer = false;
+    public int dirHeld = -1;
+    private Animator anim;
 
     //will hold vector from follower to player, updated in FixedUpdate
     private Vector2 vecToPlayer;
@@ -39,6 +41,7 @@ public class Follower : MonoBehaviour
 
         //get transform of player
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     void FixedUpdate()

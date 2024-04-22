@@ -98,6 +98,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int Direction
+    {
+        get { return dirHeld; }
+    }
+
     void Update()
     {
 
@@ -121,28 +126,28 @@ public class Player : MonoBehaviour
 
     }
 
-/*
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Jumpable"))
+    /*
+        void OnCollisionStay2D(Collision2D collision)
         {
-            isGrounded = true;
-            Debug.Log("isGrounded: " + isGrounded);
+            if (collision.gameObject.CompareTag("Jumpable"))
+            {
+                isGrounded = true;
+                Debug.Log("isGrounded: " + isGrounded);
 
-            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
+                if (debugOn) Debug.Log("isGrounded: " + isGrounded);
+            }
         }
-    }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Jumpable"))
+        void OnCollisionExit2D(Collision2D collision)
         {
-            isGrounded = false;
-            Debug.Log("isGrounded: " + isGrounded);
-            if (debugOn) Debug.Log("isGrounded: " + isGrounded);
+            if (collision.gameObject.CompareTag("Jumpable"))
+            {
+                isGrounded = false;
+                Debug.Log("isGrounded: " + isGrounded);
+                if (debugOn) Debug.Log("isGrounded: " + isGrounded);
+            }
         }
-    }
-    */
+        */
 
     /// <summary>
     /// Return true if player is at the side of the screen
