@@ -168,6 +168,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followDistance: 1
+<<<<<<< Updated upstream
   moveSpeed: 7
   floatUpwardSpeed: 2
+=======
+  moveSpeed: 6
+  floatUpwardSpeed: 0
+>>>>>>> Stashed changes
   debugOn: 0
+  defaultDeathTimer: 3
+  followerCount: {fileID: 4393635871837154535, guid: 08ea1fd8f9361894ab1b5b7c80eefcc2, type: 3}
+  bottomY: 0

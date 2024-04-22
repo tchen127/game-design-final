@@ -41,6 +41,8 @@ public class Follower : MonoBehaviour
         //get animator for this GameObject
         anim = this.GetComponent<Animator>();
 
+        //attach the followerCount text object to this follower
+        followerCount = GameObject.FindGameObjectWithTag("Follower Count");
     }
 
     // Start is called before the first frame update
@@ -67,13 +69,22 @@ public class Follower : MonoBehaviour
             if (Math.Abs(vecToPlayer.magnitude) < 1)
             {
                 followingPlayer = true;
+<<<<<<< Updated upstream
+=======
+                followerCount.GetComponent<FollowerCount>().IncrementFollowerCount();
+                if (debugOn) Debug.Log("following player");
+>>>>>>> Stashed changes
             }
         }
 
         //follow player as long as followingPlayer == true
         else
         {
+<<<<<<< Updated upstream
             if (debugOn) Debug.Log("Following Player");
+=======
+            CheckIfOffScreen();
+>>>>>>> Stashed changes
             FollowPlayer();
         }
     }

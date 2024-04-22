@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
 
         //used to check to see if moving will make player move off the screen
         float xPos = pos.x + xAxis * speed * Time.deltaTime;
+<<<<<<< Updated upstream
         //if updating x position will move player off screen border, don't update x position
         /*if (atScreenBorder(xPos))
         {
@@ -97,6 +98,20 @@ public class Player : MonoBehaviour
         //else
         //{
             pos.x = xPos;
+=======
+
+        pos.x = xPos;
+        transform.position = pos;
+
+        //don't let player go off right side of screen
+        if (transform.position.x >= Camera.main.ViewportToWorldPoint(new Vector3(.95f,0,0)).x){
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(.95f,0,0)).x;
+            transform.position = pos;
+        }
+        //don't let player go off left side of screen
+        else if (transform.position.x <= Camera.main.ViewportToWorldPoint(new Vector3(.05f,0,0)).x){
+            pos.x = Camera.main.ViewportToWorldPoint(new Vector3(.05f,0,0)).x;
+>>>>>>> Stashed changes
             transform.position = pos;
         //}
 
@@ -108,6 +123,9 @@ public class Player : MonoBehaviour
             pos.x = Camera.main.ViewportToWorldPoint(new Vector3(1,0,0)).x;
             transform.position = pos;
         }
+
+
+
     }
 
     void Update()
