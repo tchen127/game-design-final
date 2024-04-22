@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Jumpable
+  - Crumble_right
+  - Crumble_left
+  - Crumble_middle
   layers:
   - Default
   - TransparentFX

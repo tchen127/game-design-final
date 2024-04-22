@@ -13,18 +13,34 @@ public class Platform_Crumble : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
-    private void onCollisionEnter2D(Collision2D other)
+    public void OnCollisionStay2D(Collision2D other)
     {
-        Debug.Log("testing");
+        // Debug.Log("play animation");
 
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.Play("Crumble_L");
-            Debug.Log("testing 2");
-            Destroy(gameObject, 2);
+            if (gameObject.CompareTag("Crumble_left"))
+            {
+                animator.Play("Crumble_L");
+                Debug.Log("crumble left animation played");
+            }
+            else if (gameObject.CompareTag("Crumble_middle"))
+            {
+                animator.Play("Crumble_M");
+            }
+            else if (gameObject.CompareTag("Crumble_right"))
+            {
+                animator.Play("Crumble_R");
+            }
+            else
+            {
+                Debug.Log("no crumble");
+            }
+
+            Destroy(gameObject, 1);
         }
     }
 
