@@ -12,11 +12,13 @@ public class FollowerCount : MonoBehaviour
         followerCount = 0;
     }
 
+
     // Update is called once per frame
     void Update()
     {
         text.SetText("Dinos: " + followerCount);
         Debug.Log("Set FollowerCount text");
+
 
     }
 
@@ -25,12 +27,14 @@ public class FollowerCount : MonoBehaviour
         followerCount++;
         Debug.Log("Incremented FollowerCount");
 
+
     }
 
     public void DecrementFollowerCount()
     {
         followerCount--;
         Debug.Log("Decremented FollowerCount");
+
 
     }
 }

@@ -82,22 +82,17 @@ public class Follower : MonoBehaviour
             if (Math.Abs(vecToPlayer.magnitude) < 1)
             {
                 followingPlayer = true;
-<<<<<<< Updated upstream
-=======
                 followerCount.GetComponent<FollowerCount>().IncrementFollowerCount();
                 if (debugOn) Debug.Log("following player");
->>>>>>> Stashed changes
+
             }
         }
 
         //follow player as long as followingPlayer == true
         else
         {
-<<<<<<< Updated upstream
             if (debugOn) Debug.Log("Following Player");
-=======
             CheckIfOffScreen();
->>>>>>> Stashed changes
             FollowPlayer();
         }
     }
