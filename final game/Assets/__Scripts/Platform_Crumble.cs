@@ -6,19 +6,61 @@ using UnityEngine;
 public class Platform_Crumble : MonoBehaviour
 {
 
-    void Update()
-    {
+    // public Collider2D platformCollider;
+    // public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
+    [SerializeField]
+    public float animTime;
+
+    void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    public void OnCollisionStay2D(Collision2D other)
     {
-        Debug.Log("collision");
-        if (coll.gameObject.tag == "Player")
+        // Debug.Log("play animation");
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(this);
+            if (gameObject.CompareTag("Crumble_left"))
+            {
+                animator.Play("Crumble_L");
+                Debug.Log("crumble left animation played");
+            }
+            else if (gameObject.CompareTag("Crumble_middle"))
+            {
+                animator.Play("Crumble_M");
+            }
+            else if (gameObject.CompareTag("Crumble_right"))
+            {
+                animator.Play("Crumble_R");
+            }
+            else
+            {
+                Debug.Log("no crumble");
+            }
+
+            Destroy(gameObject, 1);
         }
     }
-   
 
+    // IEnumerator Crumble()
+    // {
+    //     animator.Play("Crumble_L");
+    //     // yield return new WaitForSeconds(animTime);
+    //     // Components(false); 
+    //     // yield return new WaitForSeconds(animTime);
+    //     // animator.Play("Crumble_2");
+    //     yield return new WaitForSeconds(animTime);
+    //     // Components(false);
+    //     Destroy(gameObject, 1);
+    // }
+
+    // private void Components(bool state)
+    // {
+    //     spriteRenderer.enabled = state;
+    //     platformCollider.enabled = state;
+    // }
 }
