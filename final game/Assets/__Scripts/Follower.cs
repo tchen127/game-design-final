@@ -83,6 +83,8 @@ public class Follower : MonoBehaviour
 
         //get animator for this GameObject
         anim = this.GetComponent<Animator>();
+        //make follower idle until collected by player
+        anim.speed = 0;
 
         //attach the followerCount text object to this follower
         followerCount = GameObject.FindGameObjectWithTag("Follower Count");
@@ -117,8 +119,11 @@ public class Follower : MonoBehaviour
         //Make follower follow player if player gets close enough
         if (followingPlayer == false)
         {
-            //move object up at a constant speed
-            FloatUpward();
+            if (transform.position.y < bottomY)
+            {
+                //move object up at a constant speed
+                FloatUpward();
+            }
 
             //make follower start following player if player gets close enough
             if (Math.Abs(vecToPlayer.magnitude) < 1)
@@ -161,7 +166,7 @@ public class Follower : MonoBehaviour
 
         //only move Follower if it is far enough away
         //don't move Follower if it is below player (if follower gets ahead, player can catch up)
-        if ((Math.Abs(vecToPlayer.x)> followDistance) && (vecToPlayer.y <= 5))
+        if ((Math.Abs(vecToPlayer.x) > followDistance) && (vecToPlayer.y <= 5))
         {
             //move Follower towards the player
             vecToPlayer.y = 0;

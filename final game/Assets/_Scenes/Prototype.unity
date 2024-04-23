@@ -313,7 +313,6 @@ MonoBehaviour:
   followerPrefab: {fileID: 2776341206605835871, guid: 8058c1b3e8f38b547aed66b58608ec63, type: 3}
   maxFollowerNum: 10
   spawnDelay: 2
-  stopSpawningTime: 20
 --- !u!1 &570162991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1001,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackHole
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3057632932578754721, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
 --- !u!1001 &1173065836767936229
 PrefabInstance:
