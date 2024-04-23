@@ -2,36 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The parent platform object contains left, middle, and right blocks. 
+/// Activate each platform's animation individually. 
+/// </summary>
 public class CrumbleMom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnCollisionEnter2D(Collision2D platform)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // if any child of this object is collided with by the player then...
-        // for each child of this object, make it play its respective animation
-        // and destroy after 1 second   
-
-
-        // !!!!! attach crumbleMom to parent of platform objec 
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("for each:");
-        if (collision.gameObject.CompareTag("Player"))
+        // Check if player touches the platform
+        if (platform.gameObject.CompareTag("Player"))
         {
-            Debug.Log("for each:");
+            // for each block generated 
             foreach (Transform child in transform)
             {
-                Debug.Log("for each:" + child.gameObject.name);
+                // Get CrumbleChild script to enable animation
                 child.GetComponent<CrumbleChild>().Crumble();
             }
+
+            // Destroy the parent platform after 1 second
+            Destroy(gameObject, 1);
         }
     }
+
 }
