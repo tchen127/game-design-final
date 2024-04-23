@@ -54,7 +54,7 @@ public class FollowerSpawner : MonoBehaviour
     private void SpawnFollower()
     {
         //get random position that will be used to place the follower
-        Vector3 initPos = Camera.main.ViewportToWorldPoint(new UnityEngine.Vector3(Random.Range(0f, 1f), -0.1f, 1));
+        Vector3 initPos = Camera.main.ViewportToWorldPoint(new UnityEngine.Vector3(Random.Range(0f, 1f), -0.05f, 1));
         //get x and y position of initPosition
         float x = initPos.x;
         float y = initPos.y;
