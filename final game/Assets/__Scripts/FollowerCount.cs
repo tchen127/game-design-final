@@ -27,7 +27,7 @@ public class FollowerCount : MonoBehaviour
     /// </summary>
     void Update()
     {
-        text.SetText("Dinos: " + followerCount);
+        text.SetText("Dinos: " + followerCount + "/3");
         if (debugOn) Debug.Log("Set FollowerCount text");
     }
 

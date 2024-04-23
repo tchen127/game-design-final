@@ -48,6 +48,8 @@ public class Follower : MonoBehaviour
 
     // the y position that is at the bottom of the camera
     public float bottomY;
+    // y position at the top of the camera
+    public float topY;
 
 
     /////////////////////////////// Non-tunable variables used for follower movement//////////////////////////////////////////////////
@@ -108,6 +110,10 @@ public class Follower : MonoBehaviour
         //coordinates for bottom of camera
         Vector3 bottom = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 1));
         bottomY = bottom.y;
+
+        //coordinates for top of camera
+        Vector3 top = Camera.main.ViewportToWorldPoint(new Vector3(0,1,0));
+        topY = top.y;
     }
 
 
@@ -252,10 +258,10 @@ public class Follower : MonoBehaviour
         anim.speed = 1;
     }
 
-    // checks if the follower is off the bottom of the screen. if it is, keep track of a timer that, if exceeded, kills the follower
+    // checks if the follower is off the bottom or top of the screen. if it is, keep track of a timer that, if exceeded, kills the follower
     private void CheckIfOffScreen()
     {
-        if (transform.position.y < bottomY)
+        if (transform.position.y < bottomY || transform.position.y > topY)
         {
             deathTimer -= Time.deltaTime;
 
