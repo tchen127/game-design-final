@@ -2,23 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Plays appropriate animation for each of crumble platform block (left, middle, and right) 
+/// based on the tag of the game object. 
+/// </summary>
+
 public class CrumbleChild : MonoBehaviour
 {
-
     public Animator animator;
 
     void Start()
     {
+        // Get Animator for each platform block object 
         animator = gameObject.GetComponent<Animator>();
     }
+
+    /// <summary>
+    /// Animator plays the corresponding animation for each crumble block based on its tag. 
+    /// </summary>
     public void Crumble()
     {
-        // Debug.Log("play animation");
-
         if (gameObject.CompareTag("Crumble_left"))
         {
             animator.Play("Crumble_L");
-            Debug.Log("crumble left animation played");
         }
         else if (gameObject.CompareTag("Crumble_middle"))
         {
@@ -30,10 +36,7 @@ public class CrumbleChild : MonoBehaviour
         }
         else
         {
-            Debug.Log("no crumble");
+            Debug.LogError("No tag on crumble block.");
         }
-
-        Destroy(gameObject, 1);
-
     }
 }

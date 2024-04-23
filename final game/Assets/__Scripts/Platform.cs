@@ -1,54 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-[RequireComponent(typeof(BoundsCheck))]
-public class Platform : MonoBehaviour
-{
-    [Header("Inscribed")]
-    public float moving_speed = 10f;
+// !!! DELETE THIS FILE, NOT USED!
 
-    private BoundsCheck boundCheck;
+// [RequireComponent(typeof(BoundsCheck))]
+// public class Platform : MonoBehaviour
+// {
+//     [Header("Inscribed")]
+//     public float moving_speed = 10f;
 
-    void Awake()
-    {
-        boundCheck = GetComponent<BoundsCheck>();
-    }
+//     private BoundsCheck boundCheck;
 
-    public Vector2 pos
-    {
-        get
-        {
-            return this.transform.position;
-        }
-        set
-        {
-            this.transform.position = value;
-        }
-    }
+//     void Awake()
+//     {
+//         boundCheck = GetComponent<BoundsCheck>();
+//     }
 
-    void Update()
-    {
-        // Move();
+//     public Vector2 pos
+//     {
+//         get
+//         {
+//             return this.transform.position;
+//         }
+//         set
+//         {
+//             this.transform.position = value;
+//         }
+//     }
 
-        // Check whether platform has gone above the screen, beyond blackhole
-        if (!boundCheck.isOnScreen)
-        {
-            // !! add y position offset from camera size (change later!)
-            if (pos.y >= boundCheck.camHeight)
-            {
-                // platform too high up, absorb by blackhole
-                Destroy(gameObject);
-            }
-        }
-    }
+//     void Update()
+//     {
+//         // Move();
 
-    public virtual void Move()
-    {
-        Vector2 tempPos = pos;
+//         // Check whether platform has gone above the screen, beyond blackhole
+//         if (!boundCheck.isOnScreen)
+//         {
+//             // !! add y position offset from camera size (change later!)
+//             if (pos.y >= boundCheck.camHeight)
+//             {
+//                 // platform too high up, absorb by blackhole
+//                 Destroy(gameObject);
+//             }
+//         }
+//     }
 
-        // gets the current position of platform and move it ??upward?? Y direction
-        tempPos.y += moving_speed * Time.deltaTime;
-        pos = tempPos;
-    }
-}
+//     public virtual void Move()
+//     {
+//         Vector2 tempPos = pos;
+
+//         // gets the current position of platform and move it ??upward?? Y direction
+//         tempPos.y += moving_speed * Time.deltaTime;
+//         pos = tempPos;
+//     }
+// }
