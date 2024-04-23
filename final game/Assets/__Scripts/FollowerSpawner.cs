@@ -2,41 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class <c>FollowerSpawner<c> spawns a prefab below the camera. Prefab spawns at a random x position within the camera width. 
+/// </summary>
 public class FollowerSpawner : MonoBehaviour
 {
-
-
     [Header("Inscribed")]
     [SerializeField] private GameObject followerPrefab;
     //number of followers to be spawned
     [SerializeField] private int maxFollowerNum = 5;
     //spawn delay, in seconds
     [SerializeField] private float spawnDelay = 1f;
-    //time that level will last
-    [SerializeField] private float stopSpawningTime = 20f;
 
     //number of followers that have been spawned
     private float currFollowers = 0;
     //time since last follower was spawned
     float timeWaited;
-    //time that the level has been running. set to 0 in start method
-    float levelTime;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Reset timer for spawnDelay
+    /// </summary>
     void Start()
     {   
-        //time that level has been running
-        levelTime = 0;
-
         //start counting time waited since last follower spawn (will be 0 during first frame)
         timeWaited = 0;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Spawn followers until maxFollowerNum has been reached
+    /// </summary>
     void Update()
     {
         //spawn followers will under maxFollowerNum and until levelTime runs out
-        if (currFollowers < maxFollowerNum && Time.time < stopSpawningTime)
+        if (currFollowers < maxFollowerNum)
         {
             if (timeWaited > spawnDelay && currFollowers < maxFollowerNum)
             {
@@ -50,6 +48,9 @@ public class FollowerSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method <c>SpawnFollower()<c> instantiates a prefab below the camera at a random x position
+    /// </summary>
     private void SpawnFollower()
     {
         //get random position that will be used to place the follower
