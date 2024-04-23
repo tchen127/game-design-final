@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Jumpable
   - Follower Count
+  - Crumble_left
+  - Crumble_middle
+  - Crumble_right
   layers:
   - Default
   - TransparentFX
@@ -42,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Black Hole
+    uniqueID: 4107680459
     locked: 0

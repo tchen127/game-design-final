@@ -1005,6 +1005,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackHole
       objectReference: {fileID: 0}
+    - target: {fileID: 3057632932578754723, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057632932578754723, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -187286837
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3057632932578754721, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bdc4c38ed7dfae94a8029b8b9ea442a2, type: 3}
