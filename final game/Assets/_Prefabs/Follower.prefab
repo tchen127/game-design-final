@@ -170,7 +170,12 @@ MonoBehaviour:
   followDistance: 1
   moveSpeed: 6
   floatUpwardSpeed: 0
-  debugOn: 0
+  jumpSpeed: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  raycastLength: 1
+  debugOn: 1
   defaultDeathTimer: 3
   followerCount: {fileID: 4393635871837154535, guid: 08ea1fd8f9361894ab1b5b7c80eefcc2, type: 3}
   bottomY: 0
