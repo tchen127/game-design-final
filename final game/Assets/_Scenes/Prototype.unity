@@ -1011,6 +1011,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3985150924489601920}
     m_Modifications:
+    - target: {fileID: 1173065835481559163, guid: 5a367a8e6c19c4264acd4e20ac03ce2d, type: 3}
+      propertyPath: followerCount
+      value: 
+      objectReference: {fileID: 4393635873393711272}
+    - target: {fileID: 1173065835481559163, guid: 5a367a8e6c19c4264acd4e20ac03ce2d, type: 3}
+      propertyPath: requiredFollowersToWin
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1173065835481559164, guid: 5a367a8e6c19c4264acd4e20ac03ce2d, type: 3}
       propertyPath: m_Name
       value: rocket
