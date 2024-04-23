@@ -54,7 +54,7 @@ public class PlatformGenerator : MonoBehaviour
 
         // first, randomize platform type. implement later once we have different types of platforms
         //int type = Random.Range(0, prefabPlatform.Length - 1);
-        int type = 1;// Random.Range(0, 2);
+        int type = Random.Range(0, 2);
 
         // then, randomize x position (between 0 and 1, 0 being leftmost edge of camera and 1 being rightmost edge of camera); y will always be a given distance
         Vector3 initPos = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0f, 1f), distanceFromCameraBottom, 1));
@@ -65,12 +65,13 @@ public class PlatformGenerator : MonoBehaviour
 
         // finally, randomize length of platform BASED ON PLATFORM TYPE(e.g. length 3 with 3 squares), not yet implemented
         // current values are placeholders for now. later will be Random.Range(type.minLength, type.maxLength) or something like that maybe? idk
-        int length = Random.Range(2, 8);
+        int length = Random.Range(4, 10);
 
         // create parent Platform gameobject
         GameObject platform = new GameObject();
         platform.transform.position = new Vector2(x, y);
-        if (type == 1) {
+        if (type == 1)
+        {
             // for the length of the platform, spawn a block (done so by appending to the right)
             for (int i = 0; i < length; i++)
             {
@@ -78,19 +79,24 @@ public class PlatformGenerator : MonoBehaviour
                 Vector2 position = new Vector2(x, y);
 
                 // First iteration spawn the left edge of the platform
-                if (i == 0) {
+                if (i == 0)
+                {
                     GameObject squareLeft = Instantiate<GameObject>(Normal_Platform_LeftPrefab);
                     squareLeft.transform.position = position;
                     squareLeft.transform.SetParent(platform.transform);
 
-                // Last iteration spawn the right edge of the platform
-                } else if (i == (length - 1) ){
+                    // Last iteration spawn the right edge of the platform
+                }
+                else if (i == (length - 1))
+                {
                     GameObject squareRight = Instantiate<GameObject>(Normal_Platform_RightPrefab);
                     squareRight.transform.position = position;
                     squareRight.transform.SetParent(platform.transform);
 
-                // Else spawn middle piece of the platform
-                } else {
+                    // Else spawn middle piece of the platform
+                }
+                else
+                {
                     GameObject squareMiddle = Instantiate<GameObject>(Normal_Platform_MiddlePrefab);
                     squareMiddle.transform.position = position;
                     squareMiddle.transform.SetParent(platform.transform);
@@ -98,26 +104,33 @@ public class PlatformGenerator : MonoBehaviour
                 // next square will be to the right by 1, so increase x by 1
                 x++;
             }
-        } else {
+        }
+        else
+        {
             for (int i = 0; i < length; i++)
             {
                 // spawn platform and set position
                 Vector2 position = new Vector2(x, y);
 
                 // First iteration spawn the left edge of the platform
-                if (i == 0) {
+                if (i == 0)
+                {
                     GameObject squareLeft = Instantiate<GameObject>(Crumble_Platform_LeftPrefab);
                     squareLeft.transform.position = position;
                     squareLeft.transform.SetParent(platform.transform);
 
-                // Last iteration spawn the right edge of the platform
-                } else if (i == (length - 1) ){
+                    // Last iteration spawn the right edge of the platform
+                }
+                else if (i == (length - 1))
+                {
                     GameObject squareRight = Instantiate<GameObject>(Crumble_Platform_RightPrefab);
                     squareRight.transform.position = position;
                     squareRight.transform.SetParent(platform.transform);
 
-                // Else spawn middle piece of the platform
-                } else {
+                    // Else spawn middle piece of the platform
+                }
+                else
+                {
                     GameObject squareMiddle = Instantiate<GameObject>(Crumble_Platform_MiddlePrefab);
                     squareMiddle.transform.position = position;
                     squareMiddle.transform.SetParent(platform.transform);
@@ -125,6 +138,11 @@ public class PlatformGenerator : MonoBehaviour
                 // next square will be to the right by 1, so increase x by 1
                 x++;
             }
+            // Assign 
+            Debug.Log("add crumble mom");
+            platform.AddComponent<CrumbleMom>();
+            platform.AddComponent<Rigidbody2D>();
+            platform.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
         //attach movement script so platform moves up
         platform.AddComponent<MoveObject>();

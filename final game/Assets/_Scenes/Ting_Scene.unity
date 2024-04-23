@@ -307,10 +307,10 @@ GameObject:
   - component: {fileID: 788048673}
   - component: {fileID: 788048672}
   - component: {fileID: 788048671}
-  - component: {fileID: 788048675}
   - component: {fileID: 788048674}
   - component: {fileID: 788048676}
   - component: {fileID: 788048677}
+  - component: {fileID: 788048675}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -408,21 +408,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788048670}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a58d5f6a3b5dc174f8b3fbce81c7adb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugOn: 0
+  platformSquarePrefab: {fileID: 0}
+  prefabPlatforms: []
   Normal_Platform_MiddlePrefab: {fileID: 7855163241684261895, guid: 6c6eb152b61d08e4880faec47986b4a9, type: 3}
   Normal_Platform_LeftPrefab: {fileID: 7855163241684261895, guid: 8f8980fdc01d3a448b2b9a87c10e791a, type: 3}
   Normal_Platform_RightPrefab: {fileID: 7855163241684261895, guid: c71fde90fb8c6654598e6b6a9647e578, type: 3}
   Crumble_Platform_MiddlePrefab: {fileID: 6222802237616220921, guid: 2320014d686dd4eb9958fa47c58854c6, type: 3}
   Crumble_Platform_LeftPrefab: {fileID: 2004217450677247046, guid: 10296dc892442442b991d327337211ea, type: 3}
   Crumble_Platform_RightPrefab: {fileID: 4508752455782755084, guid: 5a758334b10fd435fbc9e22ce088a5aa, type: 3}
-  distanceFromCameraBottom: -0.01
+  distanceFromCameraBottom: -0.1
   spawnDelay: 1
-  platformSpeed: 1
+  platformSpeed: 2
 --- !u!114 &788048676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +440,7 @@ MonoBehaviour:
   followerPrefab: {fileID: 2057320308}
   maxFollowerNum: 5
   spawnDelay: 1
-  levelTime: 20
+  stopSpawningTime: 20
 --- !u!114 &788048677
 MonoBehaviour:
   m_ObjectHideFlags: 0
