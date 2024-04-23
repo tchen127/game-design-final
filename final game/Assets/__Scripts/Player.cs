@@ -127,6 +127,7 @@ public class Player : MonoBehaviour
 
     }
 
+    /*
     /// <summary>
     /// Return true if player is at the side of the screen
     /// Can alter width of character to get closer/farther from the border
@@ -150,6 +151,7 @@ public class Player : MonoBehaviour
 
         return false;
     }
+    */
 }
 
 
