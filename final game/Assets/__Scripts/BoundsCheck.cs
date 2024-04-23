@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class BoundsCheck : MonoBehaviour
 {
-    private float eventTimeBottom = 0;
-    private float eventTimeTop = 0;
     private float timespanTop;
     private float timespanBottom;
 
+    // Set the amount of time for the off screen timer
     public float timeLeft = 3.0f;
+    // Text for the countdown timer
     public Text startText;
-
+    // Text for the fall alert
     public Text fallAlert;
-
+    // Text for the black hole alert
     public Text blackHoleAlert;
 
     [System.Flags]
@@ -58,40 +58,6 @@ public class BoundsCheck : MonoBehaviour
     {
         Vector2 pos = transform.position;
 
-        screenLocs = eScreenLocs.onScreen;
-
-        // !! change offset to make platform spawn a little off the x axis
-        // Restrict the X position to camWidth and some offset later
-        if (pos.x > camWidth)
-        {
-            timeLeft = 3.0f;
-            pos.x = camWidth;                                                // e
-        }
-        if (pos.x < -camWidth)
-        {
-            pos.x = -camWidth;                                                // e
-        }
-
-        // Restrict the Y position to camHeight
-        if (pos.y > camHeight)
-
-        {
-            //pos.y = camHeight;
-            screenLocs |= eScreenLocs.offUp;                                                // e
-        }
-        if (pos.y < -camHeight)
-        {
-            //pos.y = -camHeight;
-            screenLocs |= eScreenLocs.offDown;                                          // e
-        }
-
-        // no keepOnScreen function
-        if (!isOnScreen)
-        {
-            transform.position = pos;
-            screenLocs = eScreenLocs.onScreen;
-        }
-
         // Reset values for falling or being sucked up by black hole if player escapes either scenario
         if ((pos.y < (camHeight - 7)) && (pos.y > -camHeight)) {
             // Remove the text from the screen
@@ -109,37 +75,24 @@ public class BoundsCheck : MonoBehaviour
 
         // Logic for detecting whether player spends too
         // much time close too close to black hole
-
         if (debugOn) Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
         if (pos.y > (camHeight - blackHoleSize)) {
             if (debugOn) Debug.Log(camHeight - blackHoleSize);
             blackHoleAlert.enabled = true;
-            // Subtrack time and update onscreen timer
+            // Subtract time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
             // When time reaches zero load game over scene
             if (timeLeft < 0) {
                 SceneManager.LoadScene("GameOverBlackHole");
             }
-            /*                                         // e
-            if (eventTimeTop == 0) {
-                eventTimeTop = Time.time;
-                timespanTop = eventTimeTop + 3;
-            }
-
-            if (timespanTop < Time.time & pos.y > (camHeight - 5)){
-                SceneManager.LoadScene("GameOverBlackHole");
-                if (debugOn) Debug.Log("BLACK HOLE GOT YA");
-            }
-            */
-            //pos.y = camHeight;                                                // e
         }
 
         // Logic for detecting player off screen at bottom for x amount of time
         if (pos.y < -camHeight) {
             fallAlert.enabled = true;
             if (debugOn) Debug.Log("Below Camera Bottom");
-            // Subtrack time and update onscreen timer
+            // Subtract time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
             // When time reaches zero load game over scene
@@ -155,9 +108,4 @@ public class BoundsCheck : MonoBehaviour
         get { return (screenLocs == eScreenLocs.onScreen); }
     }
 
-    public bool LocIs(eScreenLocs checkLoc)
-    {
-        if (checkLoc == eScreenLocs.onScreen) return isOnScreen;
-        return ((screenLocs & checkLoc) == checkLoc);
-    }
 }
