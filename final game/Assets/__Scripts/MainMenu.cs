@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void Play()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene("Level_1");
     }
 
     /// <summary>
