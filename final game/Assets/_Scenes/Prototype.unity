@@ -295,7 +295,7 @@ MonoBehaviour:
   Crumble_Platform_MiddlePrefab: {fileID: 6222802237616220921, guid: 2320014d686dd4eb9958fa47c58854c6, type: 3}
   Crumble_Platform_LeftPrefab: {fileID: 2004217450677247046, guid: 10296dc892442442b991d327337211ea, type: 3}
   Crumble_Platform_RightPrefab: {fileID: 4508752455782755084, guid: 5a758334b10fd435fbc9e22ce088a5aa, type: 3}
-  distanceFromCameraBottom: -0.5
+  distanceFromCameraBottom: -0.2
   spawnDelay: 1
   platformSpeed: 4
 --- !u!114 &247281125
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followerPrefab: {fileID: 2776341206605835871, guid: 8058c1b3e8f38b547aed66b58608ec63, type: 3}
   maxFollowerNum: 10
-  spawnDelay: 2
+  spawnDelay: 3
 --- !u!1 &570162991
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +510,10 @@ PrefabInstance:
     - target: {fileID: 5592644194147640193, guid: 6391e063817f4254a975a41321a764aa, type: 3}
       propertyPath: m_Name
       value: sten
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592644194147640193, guid: 6391e063817f4254a975a41321a764aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5592644194147640199, guid: 6391e063817f4254a975a41321a764aa, type: 3}
       propertyPath: m_RootOrder
