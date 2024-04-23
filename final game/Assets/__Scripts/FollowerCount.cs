@@ -8,6 +8,9 @@ public class FollowerCount : MonoBehaviour
     public int followerCount; // The variable to display
     public TMP_Text text; // The TextMeshPro object to display
 
+    [Header("Debugging")]
+    [SerializeField] private bool debugOn;
+
     void Start(){
         followerCount = 0;
     }
@@ -17,7 +20,7 @@ public class FollowerCount : MonoBehaviour
     void Update()
     {
         text.SetText("Dinos: " + followerCount);
-        Debug.Log("Set FollowerCount text");
+        if (debugOn) Debug.Log("Set FollowerCount text");
 
 
     }
@@ -25,7 +28,7 @@ public class FollowerCount : MonoBehaviour
     public void IncrementFollowerCount()
     {
         followerCount++;
-        Debug.Log("Incremented FollowerCount");
+        if (debugOn) Debug.Log("Incremented FollowerCount");
 
 
     }
@@ -33,7 +36,7 @@ public class FollowerCount : MonoBehaviour
     public void DecrementFollowerCount()
     {
         followerCount--;
-        Debug.Log("Decremented FollowerCount");
+        if (debugOn) Debug.Log("Decremented FollowerCount");
 
 
     }
