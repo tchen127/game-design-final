@@ -3,39 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+/// <summary>
+/// Class <c>Player<C> defines the logic for player movement and animation
+/// </summary>
 public class Player : MonoBehaviour
 {
+    //animator attached to the player
     private Animator anim;
-    public enum eMode { idle, move }
+
+    //true if player is on a platform, otherwise false
     private bool isGrounded = false;
+
     //rigidbody of player
     private Rigidbody2D rb;
+
     //width of the player in Unity units
     private float playerWidth;
 
-
-
+    //direction of horizontal input axis
     public int dirHeld = -1;
-    public int facing = 1;
-    public eMode mode = eMode.idle;
 
+    //direction player is facing (1 is right, 0 is left)
+    public int facing = 1;
+
+    //speed of horizontal player movement
     [SerializeField] private float speed = 8;
 
     [Header("Jumping")]
+    //upward velocity of vector applied to player for jumping (determines how high player jumps)
     [SerializeField] private float jumpSpeed = 5;
+
+    //velocity added to player when jumping (only the y component should be nonzero)
+    private Vector2 jumpVec;
 
     //length of raycast sent down from player's transform to detect the ground
     [SerializeField] private float raycastLength = 2f;
+
     //layermask for the raycast to detect platforms (for jumping)
     [SerializeField] private LayerMask layerMask;
+
     //holds result of downward raycast used for jump mechanic
     private RaycastHit2D hit2D;
-    //velocity added to player when jumping (should only have a non-zero y component)
-    private Vector2 jumpVec;
+
+    
 
     [Header("Debug")]
+    //true if you want debug messages to show
     [SerializeField] private bool debugOn;
 
+    /// <summary>
+    /// Get rigidbody and animator components attached to the player
+    /// </summary>
     void Awake()
     {
         //get rigidbody component
@@ -45,6 +63,9 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    /// <summary>
+    /// Initialize jumpVec and playerWidth 
+    /// </summary>
     void Start()
     {
         //set direction and magnitude of jump
@@ -56,7 +77,10 @@ public class Player : MonoBehaviour
 
     }
 
-    //use fixedupdate for any physics interactions
+    /// <summary>
+    /// Handles all physics/movement interactions.
+    /// Determines if player can jump. Also applies movement based on input. 
+    /// </summary>
     void FixedUpdate()
     {
         //determine if player is on a jumpable layer object.
@@ -104,6 +128,9 @@ public class Player : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Animate player based on direction of input
+    /// </summary>
     void Update()
     {
 
@@ -126,32 +153,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-    /*
-    /// <summary>
-    /// Return true if player is at the side of the screen
-    /// Can alter width of character to get closer/farther from the border
-    /// </summary>
-    /// <returns>True if player is at side border of screen, otherwise false</returns>
-    private bool atScreenBorder(float xPos)
-    {
-        //get coordinates of left and right border of screen
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 1));
-        Vector3 leftEdge = new Vector3(rightEdge.x * -1, 0, 1);
-
-        //subtract player width from boundaries. this determines how close player can get to the edge
-        float maxXPos = rightEdge.x - (playerWidth / 2);
-        float minXPos = leftEdge.x + (playerWidth / 2);
-
-        //return true if player is at border, otherwise false
-        if (xPos < minXPos || xPos > maxXPos)
-        {
-            return true;
-        }
-
-        return false;
-    }
-    */
 }
 
 
