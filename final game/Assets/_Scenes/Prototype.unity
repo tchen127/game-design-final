@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followerPrefab: {fileID: 2776341206605835871, guid: 8058c1b3e8f38b547aed66b58608ec63, type: 3}
   maxFollowerNum: 10
-  spawnDelay: 3
+  spawnDelay: 4
 --- !u!1 &570162991
 GameObject:
   m_ObjectHideFlags: 0
