@@ -5,12 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject textBox;
+    public GameObject storyTextBox;
+    public GameObject preGameTextBox;
 
     // void Start()
     // {
     //     textBox.SetActive(false);
     // }
+
+    public void ShowPreGameInfo()
+    {
+        preGameTextBox.SetActive(true);
+    }
 
     public void Play()
     {
@@ -19,11 +25,11 @@ public class MainMenu : MonoBehaviour
 
     public void ShowInstructions()
     {
-        textBox.SetActive(true);
+        storyTextBox.SetActive(true);
     }
 
     public void HideInstructions()
     {
-        textBox.SetActive(false);
+        storyTextBox.SetActive(false);
     }
 }
