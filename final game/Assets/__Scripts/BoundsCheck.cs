@@ -14,6 +14,10 @@ public class BoundsCheck : MonoBehaviour
     public float timeLeft = 3.0f;
     public Text startText;
 
+    public Text fallAlert;
+
+    public Text blackHoleAlert;
+
     [System.Flags]
     public enum eScreenLocs
     {
@@ -37,6 +41,9 @@ public class BoundsCheck : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // Set the text fields to disabled until needed
+        fallAlert.enabled = false; 
+        blackHoleAlert.enabled = false;
         // access to 1st camera with tag MainCamera, get size
         // height is the distance from the origin to the top or bottom edge of the screen
         camHeight = Camera.main.orthographicSize;
@@ -45,19 +52,7 @@ public class BoundsCheck : MonoBehaviour
         camWidth = camHeight * Camera.main.aspect;
 
     }
-/*
-    void update() {
-        Vector2 pos = transform.position;
 
-        if (pos.y < -camHeight) {
-            timeLeft -= Time.deltaTime;
-            startText.text = (timeLeft).ToString("0");
-            if (timeLeft < 0) {
-                SceneManager.LoadScene("GameOver");
-            }
-        }
-    }
-*/
     // Update is called once per frame
     void LateUpdate()
     {
@@ -97,8 +92,17 @@ public class BoundsCheck : MonoBehaviour
             screenLocs = eScreenLocs.onScreen;
         }
 
+        // Reset values for falling or being sucked up by black hole if player escapes either scenario
         if ((pos.y < (camHeight - 7)) && (pos.y > -camHeight)) {
-            if (debugOn) Debug.Log("HERE");
+            // Remove the text from the screen
+            if (fallAlert.enabled) {
+                fallAlert.enabled = false; 
+            }
+            
+            if (blackHoleAlert.enabled) {
+                blackHoleAlert.enabled = false;
+            }
+            // Reset time and remove countdown from screen
             timeLeft = 3.0f;
             startText.text = " ";
         }
@@ -109,7 +113,7 @@ public class BoundsCheck : MonoBehaviour
         if (debugOn) Debug.Log("CAM HEIGHT" + (camHeight - 5).ToString("0"));
         if (pos.y > (camHeight - blackHoleSize)) {
             if (debugOn) Debug.Log(camHeight - blackHoleSize);
-            startText.text = "Black Hole Power is too STRONG!";
+            blackHoleAlert.enabled = true;
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
             startText.text = (timeLeft).ToString("0");
@@ -133,7 +137,7 @@ public class BoundsCheck : MonoBehaviour
 
         // Logic for detecting player off screen at bottom for x amount of time
         if (pos.y < -camHeight) {
-            startText.text = "Falling!";
+            fallAlert.enabled = true;
             if (debugOn) Debug.Log("Below Camera Bottom");
             // Subtrack time and update onscreen timer
             timeLeft -= Time.deltaTime;
